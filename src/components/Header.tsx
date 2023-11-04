@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { HeaderWrap } from "../styles/HeaderStyle";
+import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -48,6 +48,7 @@ const Header: React.FC = () => {
           </NavLink>
         </ul>
       </HeaderWrap>
+      <Spacer />
     </>
   );
 };

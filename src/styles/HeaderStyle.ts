@@ -5,7 +5,7 @@ export const HeaderWrap = styled.header`
   top: 0;
   z-index: 999;
   width: 100%;
-  height: 10%;
+  height: 5rem;
   background: #006dab;
   border-color: none;
   border-bottom: 0.05rem solid #006dab;
@@ -40,4 +40,8 @@ export const HeaderWrap = styled.header`
       }
     }
   }
+`;
+
+export const Spacer = styled.div`
+  height: 5rem;
 `;
