@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { HeaderWrap } from "../style/HeaderStyle";
+import { HeaderWrap } from "../styles/HeaderStyle";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
