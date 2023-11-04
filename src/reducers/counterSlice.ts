@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const counterSlice = createSlice({
-  name: 'todoSlice',
+  name: "todoSlice",
   initialState: { todo: [] },
   reducers: {
     go: state => {
-      console.log('gogo');
+      console.log("gogo");
     },
   },
 });
