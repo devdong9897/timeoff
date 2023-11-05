@@ -1,16 +1,16 @@
-import React from 'react';
-import './App.css';
-import { Route, Routes } from 'react-router';
-import Layout from './page/Layout';
-import Main from './page/Main';
-import Theme from './page/Theme';
-import Tlog from './page/Tlog';
-import Write from './page/Write';
-import TravleMap from './page/TravleMap';
-import MyPage from './page/MyPage';
-import About from './page/About';
-import Intro from './page/Intro';
-import NotFound from './page/NotFound';
+import React from "react";
+import "./App.css";
+import { Route, Routes } from "react-router";
+import Layout from "./page/Layout";
+import Main from "./page/Main";
+import Theme from "./page/Theme";
+import Tlog from "./page/Tlog";
+import Write from "./page/Write";
+import TravleMap from "./page/TravleMap";
+import MyPage from "./page/MyPage";
+import About from "./page/About";
+import Intro from "./page/Intro";
+import NotFound from "./page/NotFound";
 
 function App() {
   return (
