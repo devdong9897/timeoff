@@ -4,18 +4,20 @@ export const TlogPostWrap = styled.div`
   > div {
     display: flex;
     gap: 20px;
-    width: 100%;
-    margin: 20px 0;
-    margin-left: 42px;
+    max-width: 100%;
+    margin: 30px 0 30px 42px;
     > ul {
       width: 300px;
       height: 250px;
-      background: green;
       > li {
-        width: 100%;
+        max-width: 300px;
+
         > img {
-          width: 100%;
+          width: 300px;
           height: 205px;
+          margin-bottom: 5px;
+          border-radius: 10px;
+          border: none;
         }
         > span {
           height: 45px;
