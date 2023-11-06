@@ -1,5 +1,10 @@
 import React from "react";
-import { TlogPostWrap } from "../../styles/TlogPostStyle";
+import {
+  RegionButtons,
+  ThemeButtons,
+  TlogPostContents,
+  TlogPostWrap,
+} from "../../styles/TlogPostStyle";
 
 interface Data {
   uid: number;
@@ -190,7 +195,85 @@ const data: Data[] = [
   },
 ];
 
+interface RegData {
+  reg: string;
+}
+
+const regData: RegData[] = [
+  {
+    reg: "전체",
+  },
+  {
+    reg: "서울",
+  },
+  {
+    reg: "경기",
+  },
+  {
+    reg: "인천",
+  },
+  {
+    reg: "부산",
+  },
+  {
+    reg: "대구",
+  },
+  {
+    reg: "대전",
+  },
+  {
+    reg: "광주",
+  },
+  {
+    reg: "울산",
+  },
+  {
+    reg: "강원",
+  },
+  {
+    reg: "경북",
+  },
+  {
+    reg: "경남",
+  },
+  {
+    reg: "전북",
+  },
+  {
+    reg: "전남",
+  },
+  {
+    reg: "충북",
+  },
+  {
+    reg: "충남",
+  },
+  {
+    reg: "제주",
+  },
+];
+
+interface ThemeData {
+  theme: string;
+}
+
+const themeData: ThemeData[] = [
+  { theme: "#힐링" },
+  { theme: "#익사이팅" },
+  { theme: "#축제" },
+  { theme: "#등산" },
+  { theme: "#바다" },
+  { theme: "#크루즈" },
+];
+
 const TlogPost = () => {
+  const handleregion = () => {
+    console.log("안녕");
+  };
+
+  const handleTheme = () => {
+    console.log("난 테마야");
+  };
   const itemPer = 4;
 
   const dataGroup = [];
@@ -201,8 +284,27 @@ const TlogPost = () => {
   console.log(dataGroup);
   return (
     <TlogPostWrap>
+      <div>
+        <h2>Travle Log</h2>
+      </div>
+      <RegionButtons>
+        {regData.map((item, index) => (
+          <li key={index}>
+            <button onClick={handleregion}>{item.reg}</button>
+          </li>
+        ))}
+      </RegionButtons>
+      <ThemeButtons>
+        <ul>
+          {themeData.map((item, index) => (
+            <li key={index}>
+              <span onClick={handleTheme}>{item.theme}</span>
+            </li>
+          ))}
+        </ul>
+      </ThemeButtons>
       {dataGroup.map((group, index) => (
-        <div key={index}>
+        <TlogPostContents key={index}>
           {group.map(item => (
             <ul key={item.uid}>
               <li>
@@ -221,7 +323,7 @@ const TlogPost = () => {
               </li>
             </ul>
           ))}
-        </div>
+        </TlogPostContents>
       ))}
     </TlogPostWrap>
   );

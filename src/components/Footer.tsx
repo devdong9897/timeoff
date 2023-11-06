@@ -1,13 +1,7 @@
 import React from "react";
 import { FooterWrap } from "../styles/FooterStyle";
-import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const location = useLocation();
-
-  if (location.pathname === "/tlog" || location.pathname === "/write")
-    return null;
-
   return (
     <>
       <FooterWrap>
