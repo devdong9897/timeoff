@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const TlogPostWrap = styled.div`
+export const AllTlogPostWrap = styled.div`
   max-width: 100%;
   > div > h2 {
     text-align: center;
@@ -39,7 +39,7 @@ export const ThemeButtons = styled.div`
     }
   }
 `;
-export const TlogPostContents = styled.div`
+export const AllTlogPostContents = styled.div`
   display: flex;
   gap: 20px;
   max-width: 100%;

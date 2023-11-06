@@ -1,11 +1,10 @@
 import React from "react";
-import TlogPost from "./tlog/TlogPost";
+import AllTlogPost from "./tlog/AllTlogPost";
 
 const AllTlog = () => {
   return (
     <>
-      {/* <TlogTitle /> */}
-      <TlogPost />
+      <AllTlogPost />
     </>
   );
 };

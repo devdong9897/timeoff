@@ -2,8 +2,8 @@ import React from "react";
 import {
   RegionButtons,
   ThemeButtons,
-  TlogPostContents,
-  TlogPostWrap,
+  AllTlogPostContents,
+  AllTlogPostWrap,
 } from "../../styles/TlogPostStyle";
 
 interface Data {
@@ -266,7 +266,7 @@ const themeData: ThemeData[] = [
   { theme: "#크루즈" },
 ];
 
-const TlogPost = () => {
+const AllTlogPost = () => {
   const handleregion = () => {
     console.log("안녕");
   };
@@ -283,9 +283,9 @@ const TlogPost = () => {
   }
   console.log(dataGroup);
   return (
-    <TlogPostWrap>
+    <AllTlogPostWrap>
       <div>
-        <h2>Travle Log</h2>
+        <h2>Travel Log</h2>
       </div>
       <RegionButtons>
         {regData.map((item, index) => (
@@ -304,7 +304,7 @@ const TlogPost = () => {
         </ul>
       </ThemeButtons>
       {dataGroup.map((group, index) => (
-        <TlogPostContents key={index}>
+        <AllTlogPostContents key={index}>
           {group.map(item => (
             <ul key={item.uid}>
               <li>
@@ -323,10 +323,10 @@ const TlogPost = () => {
               </li>
             </ul>
           ))}
-        </TlogPostContents>
+        </AllTlogPostContents>
       ))}
-    </TlogPostWrap>
+    </AllTlogPostWrap>
   );
 };
 
-export default TlogPost;
+export default AllTlogPost;
