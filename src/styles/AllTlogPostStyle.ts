@@ -2,10 +2,22 @@ import styled from "@emotion/styled";
 
 export const AllTlogPostWrap = styled.div`
   max-width: 100%;
-  > div > h2 {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 50px;
+  > .all-tlog-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    > h2 {
+      text-align: center;
+      font-size: 3rem;
+    }
+    > img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 40px;
+    }
   }
 `;
 
