@@ -1,13 +1,10 @@
 import styled from "@emotion/styled";
 
 export const FooterWrap = styled.footer`
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 10%;
+  max-width: 70%;
+  height: 100%;
   background: #006dab;
-  border-color: none;
-  border-top: 0.05rem solid #006dab;
+  margin: 0 auto;
   ul {
     display: flex;
     justify-content: space-around;

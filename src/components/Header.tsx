@@ -17,6 +17,16 @@ const Header: React.FC = () => {
             <img src="" alt="Logo" />
           </li>
           <NavLink
+            to={`/`}
+            className={({ isActive }) =>
+              "nav-link" + (isActive ? "-active" : "")
+            }
+          >
+            <li>
+              <span>홈</span>
+            </li>
+          </NavLink>
+          <NavLink
             to={`/theme`}
             className={({ isActive }) =>
               "nav-link" + (isActive ? "-active" : "")

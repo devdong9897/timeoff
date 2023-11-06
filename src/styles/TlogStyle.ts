@@ -10,17 +10,12 @@ export const TlogContainer = styled.div`
       height: 7rem;
       background: red;
       margin: 2.5rem 0;
-      position: static;
-      left: 0;
-      transition: all 0.3s ease;
-      &.fixed {
+      &.left-bar {
         position: fixed;
-        top: 12%;
+        top: 16%;
         left: 7.5%;
-        max-width: 112px;
-        height: 700px;
-        transform-origin: top left;
-        transform: rotate(360deg);
+        width: 112px;
+        height: 600px;
       }
     }
   }
