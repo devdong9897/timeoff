@@ -4,15 +4,22 @@ import { Bnner } from "../styles/MainBnnerStyle";
 const MainBnner = () => {
   return (
     <Bnner>
-      main<div className="BnnerImg">BnnerImg</div>
-      <h4>
-        이것은 이미지 설명글. <br />
-        메인 슬라이드 설명글입니다.
-        <br />
-        메인 슬라이드 설명글입니다.
-        <span>자세히 보기</span>
-      </h4>
-      <div className="BnnerBt">슬라이드 버튼</div>
+      <div className="mainTop">
+        <ul>
+          <li className="topImg">
+            <img src="" alt="" />
+          </li>
+          <li className="topInfo">
+            <span>걸어서 말고 차타고 테마 여행</span>
+          </li>
+          <li className="topDetail">
+            <span>자세히 보기</span>
+          </li>
+        </ul>
+      </div>
+      <div className="mainSection">
+        <div className="mainBt"></div>
+      </div>
     </Bnner>
   );
 };
