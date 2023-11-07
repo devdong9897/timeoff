@@ -1,7 +1,10 @@
 import React from "react";
+import MainBnner from "../components/MainBnner";
 
 const Main = () => {
-  return <div>Main</div>;
+  return (
+    <MainBnner />
+  );
 };
 
 export default Main;
