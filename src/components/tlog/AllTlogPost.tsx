@@ -1,4 +1,3 @@
-import React from "react";
 import {
   RegionButtons,
   ThemeButtons,
@@ -279,6 +278,10 @@ const userData: UserData[] = [
 ];
 
 const AllTlogPost = () => {
+  const handleImgClick = () => {
+    console.log("제길");
+  };
+
   const handleregion = () => {
     console.log("안녕");
   };
@@ -299,7 +302,7 @@ const AllTlogPost = () => {
       <div className="all-tlog-title">
         <h2>Travel Log</h2>
         {userData.map(item => (
-          <img key={item.uid} src={item.img} alt="" />
+          <img onClick={handleImgClick} key={item.uid} src={item.img} alt="" />
         ))}
       </div>
       <RegionButtons>
