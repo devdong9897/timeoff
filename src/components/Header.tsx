@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
-import { toggle } from "../reducers/tlogSlice";
+import { setTrue } from "../reducers/tlogSlice";
 import { useDispatch } from "react-redux";
 
 const Header: React.FC = () => {
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const handleImgClick = () => {
     console.log("이동되니");
     // props.setChange(false);
-    dispatch(toggle());
+    dispatch(setTrue());
   };
 
   return (

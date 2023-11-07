@@ -1,22 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface TlogState {
-  isChangeComponent: boolean;
+  isTrue: boolean;
 }
 
 const initialState: TlogState = {
-  isChangeComponent: false,
+  isTrue: true,
 };
 
-const tlogSlice = createSlice({
-  name: "tlogSlice",
+const booleanSlice = createSlice({
+  name: "boolean",
   initialState,
   reducers: {
+    setTrue: state => {
+      state.isTrue = true;
+    },
+    setFalse: state => {
+      state.isTrue = false;
+    },
     toggle: state => {
-      state.isChangeComponent = !state.isChangeComponent;
+      state.isTrue = !state.isTrue;
     },
   },
 });
 
-export const { toggle } = tlogSlice.actions;
-export default tlogSlice;
+export const { setTrue, setFalse, toggle } = booleanSlice.actions;
+export default booleanSlice;

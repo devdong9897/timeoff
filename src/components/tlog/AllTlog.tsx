@@ -5,7 +5,7 @@ import {
   AllTlogPostContents,
   AllTlogPostWrap,
 } from "../../styles/AllTlogStyle";
-import { toggle } from "../../reducers/tlogSlice";
+import { setFalse } from "../../reducers/tlogSlice";
 
 // interface AllTlogProps {
 //   setChange: React.Dispatch<React.SetStateAction<boolean>>;
@@ -292,7 +292,7 @@ const AllTlog = () => {
   const handleImgClick = () => {
     console.log("이동되니");
     // props.setChange(false);
-    dispatch(toggle());
+    dispatch(setFalse());
   };
 
   const handleregion = () => {
