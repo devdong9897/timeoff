@@ -1,9 +1,18 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
+import { toggle } from "../reducers/tlogSlice";
+import { useDispatch } from "react-redux";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleImgClick = () => {
+    console.log("이동되니");
+    // props.setChange(false);
+    dispatch(toggle());
+  };
 
   return (
     <>
@@ -52,7 +61,7 @@ const Header: React.FC = () => {
               "nav-link" + (isActive ? "-active" : "")
             }
           >
-            <li>
+            <li onClick={handleImgClick}>
               <span>티로그</span>
             </li>
           </NavLink>

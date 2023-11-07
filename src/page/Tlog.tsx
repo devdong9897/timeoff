@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
-import AllTlog from "../components/AllTlog";
+import AllTlog from "../components/tlog/AllTlog";
 import { TlogContainer } from "../styles/TlogStyle";
+import MyTlog from "../components/tlog/MyTlog";
+import { useSelector } from "react-redux";
+
+interface TlogSliceState {
+  isChangeComponent: boolean;
+}
 
 interface SubscribeData {
   subscribe: string;
@@ -34,8 +40,11 @@ const subscribeData: SubscribeData[] = [
 ];
 
 const Tlog = () => {
-  const [scroll, setScroll] = useState(false);
-
+  const [scroll, setScroll] = useState<boolean>(false);
+  // const [Change, setChange] = useState<boolean>(true);
+  const { isChangeComponent } = useSelector(
+    (state: { tlogSlice: TlogSliceState }) => state.tlogSlice,
+  );
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -62,7 +71,9 @@ const Tlog = () => {
             ))}
           </ul>
         </div>
-        <AllTlog />
+        {isChangeComponent ? <AllTlog /> : <MyTlog />}
+
+        {/* {Change ? <AllTlog setChange={setChange} /> : <MyTlog />} */}
       </div>
     </TlogContainer>
   );

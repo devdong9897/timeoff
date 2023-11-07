@@ -1,9 +1,15 @@
+import { useDispatch } from "react-redux";
 import {
   RegionButtons,
   ThemeButtons,
   AllTlogPostContents,
   AllTlogPostWrap,
-} from "../../styles/AllTlogPostStyle";
+} from "../../styles/AllTlogStyle";
+import { toggle } from "../../reducers/tlogSlice";
+
+// interface AllTlogProps {
+//   setChange: React.Dispatch<React.SetStateAction<boolean>>;
+// }
 
 interface Data {
   uid: number;
@@ -277,9 +283,16 @@ const userData: UserData[] = [
   },
 ];
 
-const AllTlogPost = () => {
+// const AllTlog: React.FunctionComponent<AllTlogProps> = (
+//   props: AllTlogProps,
+// ) => {
+const AllTlog = () => {
+  const dispatch = useDispatch();
+
   const handleImgClick = () => {
-    console.log("제길");
+    console.log("이동되니");
+    // props.setChange(false);
+    dispatch(toggle());
   };
 
   const handleregion = () => {
@@ -296,13 +309,15 @@ const AllTlogPost = () => {
   for (let i = 0; i < data.length; i += itemPer) {
     dataGroup.push(data.slice(i, i + itemPer));
   }
-  console.log(dataGroup);
+
   return (
     <AllTlogPostWrap>
       <div className="all-tlog-title">
         <h2>Travel Log</h2>
         {userData.map(item => (
-          <img onClick={handleImgClick} key={item.uid} src={item.img} alt="" />
+          <div key={item.uid} onClick={handleImgClick}>
+            <img src={item.img} alt="" />
+          </div>
         ))}
       </div>
       <RegionButtons>
@@ -347,4 +362,4 @@ const AllTlogPost = () => {
   );
 };
 
-export default AllTlogPost;
+export default AllTlog;
