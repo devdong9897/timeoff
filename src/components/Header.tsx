@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
 import { setTrue } from "../reducers/tlogSlice";
 import { useDispatch } from "react-redux";
+import Search from "./Search";
 
 const Header: React.FC = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleImgClick = () => {
@@ -17,14 +17,12 @@ const Header: React.FC = () => {
   return (
     <>
       <HeaderWrap>
-        <ul>
-          <li
-            onClick={() => {
-              navigate(`/`);
-            }}
-          >
-            <img src="" alt="Logo" />
-          </li>
+        <ul className="main-category">
+          <NavLink to={`/`}>
+            <li>
+              <img src="/logo/logo.png" alt="Logo" />
+            </li>
+          </NavLink>
           <NavLink
             to={`/`}
             className={({ isActive }) =>
@@ -65,6 +63,17 @@ const Header: React.FC = () => {
               <span>티로그</span>
             </li>
           </NavLink>
+        </ul>
+        <ul className="etc-category">
+          <li>
+            <Search />
+          </li>
+          <li>
+            <img src="/leng/leng.png" alt="leng" />
+          </li>
+          <li>
+            <img src="/login/login.png" alt="Profile" />
+          </li>
         </ul>
       </HeaderWrap>
       <Spacer />
