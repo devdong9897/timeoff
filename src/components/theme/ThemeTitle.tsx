@@ -6,7 +6,7 @@ const ThemeTitle = () => {
   return (
     <ThemeContainer>
       <div>
-        <h1>이런 테마여행 어떠세요?</h1>
+        <h1>이런 테마여행 어떠세용?</h1>
       </div>
       <div className="theme-box-container">
         <div className="theme-box healing">
