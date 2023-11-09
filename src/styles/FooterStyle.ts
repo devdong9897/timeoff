@@ -28,7 +28,6 @@ export const FooterWrap = styled.footer`
     margin-bottom: 20px;
     > li {
       color: #666;
-      cursor: pointer;
     }
   }
 `;

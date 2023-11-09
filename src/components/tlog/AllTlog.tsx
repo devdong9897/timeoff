@@ -3,7 +3,7 @@ import {
   RegionButtons,
   ThemeButtons,
   AllTlogPostContents,
-  AllTlogPostWrap,
+  AllTlogWrap,
 } from "../../styles/AllTlogStyle";
 import { setFalse } from "../../reducers/tlogSlice";
 
@@ -311,7 +311,7 @@ const AllTlog = () => {
   }
 
   return (
-    <AllTlogPostWrap>
+    <AllTlogWrap>
       <div className="all-tlog-title">
         <h2>Travel Log</h2>
         {userData.map(item => (
@@ -358,7 +358,7 @@ const AllTlog = () => {
           ))}
         </AllTlogPostContents>
       ))}
-    </AllTlogPostWrap>
+    </AllTlogWrap>
   );
 };
 

@@ -72,5 +72,5 @@ export const HeaderWrap = styled.header`
 `;
 
 export const Spacer = styled.div`
-  height: 5rem;
+  height: 6rem;
 `;

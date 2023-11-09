@@ -1,7 +1,5 @@
-import {
-  AllTlogPostContents,
-  AllTlogPostWrap,
-} from "../../styles/AllTlogStyle";
+import React, { useState } from "react";
+import { MyTlogWrap, MyTlogPostContents } from "../../styles/MyTlogStyle";
 
 interface Data {
   uid: number;
@@ -204,8 +202,12 @@ const userData: UserData[] = [
   },
 ];
 const MyTlog = () => {
+  const [textValue, setTextValue] = useState<string>("");
+
+  const handleValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTextValue(e.target.value);
+  };
   const handleImgClick = () => {
-    console.log("handleImgClick is called");
     console.log("??");
   };
 
@@ -218,16 +220,37 @@ const MyTlog = () => {
   }
   console.log(dataGroup);
   return (
-    <AllTlogPostWrap>
-      <div className="all-tlog-title">
+    <MyTlogWrap>
+      <div className="my-tlog-title">
         {userData.map(item => (
-          <div key={item.uid} onClick={handleImgClick}>
-            <img src={item.img} alt="" />
+          <div
+            className="my-tlog-community"
+            key={item.uid}
+            onClick={handleImgClick}
+          >
+            <div>
+              <img src={item.img} alt="" />
+            </div>
+            <ul>
+              <li>
+                <span>게시물</span>
+                <span>구독</span>
+                <span>좋아요</span>
+              </li>
+              <li>
+                <textarea
+                  value={textValue}
+                  onChange={handleValue}
+                  rows={7}
+                  cols={60}
+                />
+              </li>
+            </ul>
           </div>
         ))}
       </div>
       {dataGroup.map((group, index) => (
-        <AllTlogPostContents key={index}>
+        <MyTlogPostContents key={index}>
           {group.map(item => (
             <ul key={item.uid}>
               <li>
@@ -246,9 +269,9 @@ const MyTlog = () => {
               </li>
             </ul>
           ))}
-        </AllTlogPostContents>
+        </MyTlogPostContents>
       ))}
-    </AllTlogPostWrap>
+    </MyTlogWrap>
   );
 };
 

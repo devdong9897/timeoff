@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const AllTlogPostWrap = styled.div`
+export const AllTlogWrap = styled.div`
   max-width: 100%;
   > .all-tlog-title {
     display: flex;
