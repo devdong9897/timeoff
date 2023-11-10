@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const ThemeMapContainer = styled.div`
   .map-box {
-    width: 650px;
+    width: 550px;
     height: 850px;
     background: #03c75a;
     margin-top: 50px;
