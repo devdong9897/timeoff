@@ -5,6 +5,7 @@ import {
   CardContent,
   CardTitle,
   CardDescription,
+  CardContainer,
 } from "../../styles/ThemeListStyle";
 
 interface Data {
@@ -48,16 +49,18 @@ const data: Data[] = [
 const ThemeList = () => {
   return (
     <ThemeListContainer>
-      <h1>2023년 11월 테마 추천여행지</h1>
-      {data.map(item => (
-        <Card key={item.uid}>
-          <img src={item.img} alt={item.title} />
-          <CardContent>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </CardContent>
-        </Card>
-      ))}
+      <h1>2023년 테마 추천여행지</h1>
+      <CardContainer>
+        {data.map(item => (
+          <Card key={item.uid}>
+            <img src={item.img} alt={item.title} />
+            <CardContent>
+              <CardTitle>{item.title}</CardTitle>
+              <CardDescription>{item.description}</CardDescription>
+            </CardContent>
+          </Card>
+        ))}
+      </CardContainer>
     </ThemeListContainer>
   );
 };
