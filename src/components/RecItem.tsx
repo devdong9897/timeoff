@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import { Rec } from "../styles/RecItemStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleChevronLeft,
+  faCircleChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface slideData {
   pid: number;
@@ -41,24 +46,53 @@ const RecItem: React.FC = () => {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const itemsPerPage = 5;
+  const totalItems = datas.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % datas.length);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const toPrev = () => {
+    setCurrentPage(prev => Math.max(prev - 1, 1));
   };
 
-  const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + datas.length) % datas.length);
+  const toNext = () => {
+    setCurrentPage(prev => Math.min(prev + 1, totalPages));
   };
 
   return (
     <Rec>
-      <img
-        src={datas[currentSlide].img}
-        alt={datas[currentSlide].title}
-      />
-      <button onClick={prevSlide}>이전</button>
-      <button onClick={nextSlide}>다음</button>
+      <ul className="item-list">
+        {datas
+          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+          .map(data => (
+            <li key={data.pid}>
+              <img src={data.img} alt={data.title} />
+              <div>{data.title}</div>
+            </li>
+          ))}
+      </ul>
+
+      <div
+        className="prev-btn"
+        onClick={toPrev}
+        style={{ display: currentPage === 1 ? "none" : "" }}
+      >
+        <FontAwesomeIcon
+          icon={faCircleChevronLeft}
+          style={{ color: "#e8eaee" }}
+        />
+      </div>
+      <div
+        className="next-btn"
+        onClick={toNext}
+        style={{ display: currentPage === totalPages ? "none" : "" }}
+      >
+        <FontAwesomeIcon
+          icon={faCircleChevronRight}
+          style={{ color: "#e8eaee" }}
+        />
+      </div>
     </Rec>
   );
 };
