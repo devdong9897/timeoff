@@ -23,7 +23,7 @@ const WriteEditor = () => {
         ref={editorRef}
         initialValue="테스트 중입니다?"
         previewStyle="vertical"
-        height="500px"
+        height="600px"
         initialEditType="wysiwyg"
         useCommandShortcut={true}
         hideModeSwitch={true}
