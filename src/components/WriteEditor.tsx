@@ -25,7 +25,7 @@ const WriteEditor = () => {
         previewStyle="vertical"
         height="500px"
         initialEditType="wysiwyg"
-        useCommandShortcut={false}
+        useCommandShortcut={true}
         hideModeSwitch={true}
         language="ko-KR"
         plugins={[colorSyntax]}
