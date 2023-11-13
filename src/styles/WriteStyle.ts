@@ -11,6 +11,7 @@ export const WriteWrap = styled.div`
       width: 100%;
       height: 3rem;
       font-size: 1.5rem;
+      font-weight: 600;
       padding-left: 12px;
       border: 1px solid #006dab;
       border-radius: 8px;

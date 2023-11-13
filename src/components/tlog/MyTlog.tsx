@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MyTlogWrap, MyTlogPostContents } from "../../styles/MyTlogStyle";
+import { useNavigate } from "react-router";
 
 interface Data {
   uid: number;
@@ -203,6 +204,11 @@ const userData: UserData[] = [
 ];
 const MyTlog = () => {
   const [textValue, setTextValue] = useState<string>("");
+  const navigate = useNavigate();
+
+  const handleWriteClick = () => {
+    navigate("/write");
+  };
 
   const handleValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value);
@@ -248,6 +254,21 @@ const MyTlog = () => {
             </ul>
           </div>
         ))}
+      </div>
+      <div className="transform-buttons">
+        <ul>
+          <li>
+            <span>최신순</span>
+            <span>좋아요</span>
+          </li>
+          <li>
+            <span>게시물</span>
+            <span>스크랩</span>
+          </li>
+          <li>
+            <span onClick={handleWriteClick}>글작성</span>
+          </li>
+        </ul>
       </div>
       {dataGroup.map((group, index) => (
         <MyTlogPostContents key={index}>
