@@ -8,18 +8,18 @@ import React, { useEffect } from "react";
 // ];
 
 const NaverMap = () => {
-  const { naver } = window;
+  // const { naver } = window;
   //   const [myLocation, setMyLocation] = useState<
   //     { latitude: number; longitude: number } | string
   //   >("");
 
   useEffect(() => {
-    const mapOptions = {
-      center: new naver.maps.LatLng(37.3595704, 127.105399),
-      zoom: 10,
-    };
+    // const mapOptions = {
+    //   center: new naver.maps.LatLng(37.3595704, 127.105399),
+    //   zoom: 10,
+    // };
 
-    new naver.maps.Map("map", mapOptions);
+    // new naver.maps.Map("map", mapOptions);
   }, []);
 
   return <div id="map" style={{ width: "100%", height: "500px" }}></div>;
