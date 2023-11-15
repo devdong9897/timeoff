@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/navermaps": "^3.7.3",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^9.0.0",

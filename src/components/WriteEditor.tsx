@@ -23,9 +23,9 @@ const WriteEditor = () => {
         ref={editorRef}
         initialValue="테스트 중입니다?"
         previewStyle="vertical"
-        height="500px"
+        height="600px"
         initialEditType="wysiwyg"
-        useCommandShortcut={false}
+        useCommandShortcut={true}
         hideModeSwitch={true}
         language="ko-KR"
         plugins={[colorSyntax]}

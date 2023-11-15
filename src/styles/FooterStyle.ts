@@ -25,7 +25,7 @@ export const FooterWrap = styled.footer`
     gap: 20px;
     width: 100%;
     height: 100%;
-    margin-bottom: 20px;
+    padding-bottom: 2rem;
     > li {
       color: #666;
     }
