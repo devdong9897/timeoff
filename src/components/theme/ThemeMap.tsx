@@ -5,7 +5,7 @@ const ThemeMap = () => {
   return (
     <ThemeMapContainer>
       <div className="map-box">
-        <p>지도 map</p>
+        <p>지도!!!</p>
       </div>
     </ThemeMapContainer>
   );
