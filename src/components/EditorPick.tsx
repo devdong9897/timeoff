@@ -3,7 +3,11 @@ import { EditorWrap } from '../styles/EditorPickStyle'
 
 const EditorPick = () => {
   return (
-     <EditorWrap></EditorWrap>
+     <EditorWrap>
+      <div>
+  
+      </div>
+     </EditorWrap>
   )
 }
 

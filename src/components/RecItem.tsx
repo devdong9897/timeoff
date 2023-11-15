@@ -80,7 +80,7 @@ const RecItem: React.FC = () => {
       >
         <FontAwesomeIcon
           icon={faCircleChevronLeft}
-          style={{ color: "#e8eaee" }}
+          // style={{ color: "#e8eaee" }}
         />
       </div>
       <div
@@ -90,7 +90,7 @@ const RecItem: React.FC = () => {
       >
         <FontAwesomeIcon
           icon={faCircleChevronRight}
-          style={{ color: "#e8eaee" }}
+          // style={{ color: "#e8eaee" }}
         />
       </div>
     </Rec>
