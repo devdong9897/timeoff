@@ -12,4 +12,9 @@ export const ThemeMapContainer = styled.div`
     font-size: 45px;
     border-radius: 20px;
   }
+
+  #busan:hover {
+    outline: none;
+    fill: red;
+  }
 `;
