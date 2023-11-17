@@ -8,7 +8,7 @@ const ThemeMap = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 524 631"
           aria-label="Map of South Korea"
-          fill="#818283"
+          fill="#e7e5ae"
         >
           <path
             id="busan"
