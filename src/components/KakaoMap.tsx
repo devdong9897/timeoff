@@ -24,20 +24,32 @@ const KakaoMap = () => {
     } else {
       window.alert("현재위치를 알수 없습니다.");
     }
+  }, []);
 
+  useEffect(() => {
     if (typeof myLocation !== "string") {
+      const currentPosition = [myLocation.latitude, myLocation.longitude];
+
       const container = document.getElementById("map");
       const options = {
         center: new kakao.maps.LatLng(
           myLocation.latitude,
           myLocation.longitude,
         ),
-        level: 6,
+        level: 5,
       };
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const map = new kakao.maps.Map(container, options);
+
+      const currentMarker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(currentPosition[0], currentPosition[1]),
+        map,
+      });
+
+      currentMarker.setMap(map);
     }
-  }, []);
+  }, [myLocation]);
 
   return <KakaoMapWrap id="map"></KakaoMapWrap>;
 };
