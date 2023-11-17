@@ -1,4 +1,3 @@
-import React from "react";
 import { ThemeMapContainer } from "../../styles/ThemeMapStyle";
 
 const ThemeMap = () => {
@@ -9,8 +8,7 @@ const ThemeMap = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 524 631"
           aria-label="Map of South Korea"
-          style={{ border: "1px solid black", paddingTop: "50px" }}
-          fill="#747474"
+          fill="#969696"
         >
           <path
             id="busan"
