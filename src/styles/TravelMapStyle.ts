@@ -9,6 +9,6 @@ export const NaverMapWrap = styled.div`
 export const TravelMapWrap = styled.div`
   > .spacer {
     width: 100%;
-    height: 10px;
+    height: 5px;
   }
 `;
