@@ -129,4 +129,9 @@ export const ThemeMapContainer = styled.div`
     cursor: pointer;
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
   }
+
+  #busan:hover {
+    outline: none;
+    fill: red;
+  }
 `;

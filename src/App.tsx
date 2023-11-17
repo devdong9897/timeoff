@@ -5,7 +5,7 @@ import Main from "./page/Main";
 import Theme from "./page/Theme";
 import Tlog from "./page/Tlog";
 import Write from "./page/Write";
-import TravleMap from "./page/TravleMap";
+import TravleMap from "./page/TravelMap";
 import MyPage from "./page/MyPage";
 import About from "./page/About";
 import Intro from "./page/Intro";

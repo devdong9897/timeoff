@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import {
   RegionButtons,
   ThemeButtons,
   AllTlogPostContents,
   AllTlogWrap,
 } from "../../styles/AllTlogStyle";
-import { setFalse } from "../../reducers/tlogSlice";
+// import { setFalse } from "../../reducers/tlogSlice";
 
 // interface AllTlogProps {
 //   setChange: React.Dispatch<React.SetStateAction<boolean>>;
@@ -271,29 +271,17 @@ const themeData: ThemeData[] = [
   { theme: "#크루즈" },
 ];
 
-interface UserData {
-  uid: number;
-  img: string;
-}
-
-const userData: UserData[] = [
-  {
-    uid: 1,
-    img: "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDEwMjhfMjk3%2FMDAxNjAzODg0NzU0MDg3.nm28wChnQlROEEPObqaoba87P_X0HYejEGuHYe8VvQEg.2X5G3yOBcvDf4FkBAgAmr0KZDWlJS6_KRnuzlGoQ8qwg.JPEG.kyolove14%2F%25C8%25FB%25BD%25EB%25BF%25A9%25C0%25DA_%25B5%25B5%25BA%25C0%25BC%25F8_%25BE%25C8%25B9%25CE%25C7%25F5_%2528113%2529.jpg&type=sc960_832",
-  },
-];
-
 // const AllTlog: React.FunctionComponent<AllTlogProps> = (
 //   props: AllTlogProps,
 // ) => {
 const AllTlog = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleImgClick = () => {
-    console.log("이동되니");
-    // props.setChange(false);
-    dispatch(setFalse());
-  };
+  // const handleImgClick = () => {
+  //   console.log("이동되니");
+  //   // props.setChange(false);
+  //   dispatch(setFalse());
+  // };
 
   const handleregion = () => {
     console.log("안녕");
@@ -314,11 +302,6 @@ const AllTlog = () => {
     <AllTlogWrap>
       <div className="all-tlog-title">
         <h2>Travel Log</h2>
-        {userData.map(item => (
-          <div key={item.uid} onClick={handleImgClick}>
-            <img src={item.img} alt="" />
-          </div>
-        ))}
       </div>
       <RegionButtons>
         {regData.map((item, index) => (

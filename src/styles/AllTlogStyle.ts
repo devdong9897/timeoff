@@ -11,6 +11,7 @@ export const AllTlogWrap = styled.div`
     > h2 {
       text-align: center;
       font-size: 3rem;
+      margin-bottom: 3rem;
     }
     > div {
       border-radius: 50%;
