@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Bnner = styled.div`
 margin-bottom: 150px;
-  .mainTop {
+  .main-top {
     width: 100%;
     height: 400px;
     background: green;
@@ -10,7 +10,7 @@ margin-bottom: 150px;
       position: relative;
       width: 100%;
       height: 500px;
-      .topImg {
+      .top-img {
         position: absolute;
         top: 15%;
         left: 10%;
@@ -18,7 +18,7 @@ margin-bottom: 150px;
         height: 400px;
         background: black;
       }
-      .topInfo {
+      .top-info {
         position: absolute;
         top: 35%;
         right: 20%;
@@ -26,7 +26,7 @@ margin-bottom: 150px;
         width: 23rem;
         height: 8rem;
       }
-      .topDetail {
+      .top-detail {
         position: absolute;
         bottom: 34.4%;
         right: 41.45%;
@@ -36,12 +36,12 @@ margin-bottom: 150px;
       }
     }
   }
-  .mainSection {
+  .main-section {
     width: 100%;
     height: 100%;
     /* height: 500px; */
     background: cyan;
-    .mainBt {
+    .progress-width {
       position: absolute;
       width: 500px;
       height: 40px;
