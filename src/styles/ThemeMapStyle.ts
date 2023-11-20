@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const ThemeMapContainer = styled.div`
   .map-box {
-    width: 550px;
-    height: 850px;
+    width: 600px;
+    height: 830px;
     margin-bottom: 50px;
     background: #c3ebff;
     margin-top: 50px;
@@ -37,6 +37,7 @@ export const ThemeMapContainer = styled.div`
     outline: none;
     fill: #a2ba99;
     cursor: pointer;
+    padding: 0;
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
   }
   #daejeon:hover {
