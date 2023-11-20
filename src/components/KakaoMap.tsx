@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { KakaoMapWrap } from "../styles/KakaoStyle";
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
-
+import { Map } from "react-kakao-maps-sdk";
+const { kakao } = window;
 const KakaoMap = () => {
-  const { kakao } = window;
   const [myLocation, setMyLocation] = useState<
     { latitude: number; longitude: number } | string
   >("");
@@ -31,27 +25,47 @@ const KakaoMap = () => {
       const currentPosition = [myLocation.latitude, myLocation.longitude];
 
       const container = document.getElementById("map");
-      const options = {
-        center: new kakao.maps.LatLng(
-          myLocation.latitude,
-          myLocation.longitude,
-        ),
-        level: 5,
-      };
+      if (container != null) {
+        const options = {
+          center: new kakao.maps.LatLng(
+            myLocation.latitude,
+            myLocation.longitude,
+          ),
+          level: 5,
+        };
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const map = new kakao.maps.Map(container, options);
+        const map = new kakao.maps.Map(container, options);
 
-      const currentMarker = new kakao.maps.Marker({
-        position: new kakao.maps.LatLng(currentPosition[0], currentPosition[1]),
-        map,
-      });
+        const currentMarker = new kakao.maps.Marker({
+          position: new kakao.maps.LatLng(
+            currentPosition[0],
+            currentPosition[1],
+          ),
+          map,
+        });
 
-      currentMarker.setMap(map);
+        currentMarker.setMap(map);
+      }
     }
   }, [myLocation]);
 
-  return <KakaoMapWrap id="map"></KakaoMapWrap>;
+  return (
+    <KakaoMapWrap>
+      <Map
+        id="map"
+        center={
+          typeof myLocation === "object"
+            ? { lat: myLocation.latitude, lng: myLocation.longitude }
+            : { x: 0, y: 0 }
+        }
+        style={{
+          width: "100%",
+          height: "700px",
+        }}
+        level={5}
+      ></Map>
+    </KakaoMapWrap>
+  );
 };
 
 export default KakaoMap;
