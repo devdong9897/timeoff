@@ -10,10 +10,6 @@ interface Place {
   y: number;
 }
 
-interface Marker {
-  setMap: (map: any) => void;
-}
-
 interface Pagination {
   last: number;
   current: number;
@@ -27,10 +23,11 @@ declare global {
 }
 
 const KakaoMap: React.FC = () => {
-  const [markers, setMarkers] = useState<Marker[]>([]);
   const [map, setMap] = useState<any>(null);
   const [places, setPlaces] = useState<Place[]>([]);
   const [infowindow, setInfowindow] = useState<any>(null);
+  const [word, setWord] = useState<string>("");
+  const [currentMarkers, setCurrentMarkers] = useState<kakao.maps.Marker[]>([]);
   const [myLocation, setMyLocation] = useState<{
     info: { latitude: number; longitude: number } | string;
     marker: any | null;
@@ -38,7 +35,46 @@ const KakaoMap: React.FC = () => {
 
   console.log(myLocation);
   console.log(setMap);
+  console.log(currentMarkers);
+  console.log(setPlaces);
 
+  const initMap = (initialLatitude: number, initialLongitude: number) => {
+    window.kakao.maps.load(() => {
+      const mapContainer = document.getElementById("map");
+      if (mapContainer != null) {
+        const options = {
+          center: new window.kakao.maps.LatLng(
+            initialLatitude,
+            initialLongitude,
+          ),
+          level: 5,
+        };
+        const newMap = new window.kakao.maps.Map(mapContainer, options);
+        setMap(newMap);
+        setInfowindow(new window.kakao.maps.InfoWindow({ zIndex: 1 }));
+
+        // 이전 마커 제거
+        if (currentMarkers.length > 0) {
+          removeMarker();
+        }
+
+        if (typeof myLocation !== "string") {
+          if (myLocation.marker !== null) {
+            myLocation.marker.setMap(null);
+          }
+
+          const currentMarker = new window.kakao.maps.Marker({
+            position: new window.kakao.maps.LatLng(
+              initialLatitude,
+              initialLongitude,
+            ),
+          });
+          currentMarker.setMap(newMap);
+          setMyLocation({ info: myLocation.info, marker: currentMarker });
+        }
+      }
+    });
+  };
   useEffect(() => {
     if (navigator.geolocation != null) {
       navigator.geolocation.getCurrentPosition(
@@ -63,41 +99,10 @@ const KakaoMap: React.FC = () => {
     }
   }, []);
 
-  const initMap = (initialLatitude: number, initialLongitude: number) => {
-    window.kakao.maps.load(() => {
-      const mapContainer = document.getElementById("map");
-      if (mapContainer != null) {
-        const options = {
-          center: new window.kakao.maps.LatLng(
-            initialLatitude,
-            initialLongitude,
-          ),
-          level: 5,
-        };
-        const newMap = new window.kakao.maps.Map(mapContainer, options);
-        setMap(newMap);
-        setInfowindow(new window.kakao.maps.InfoWindow({ zIndex: 1 }));
-
-        if (typeof myLocation !== "string") {
-          if (myLocation.marker !== null) {
-            myLocation.marker.setMap(null);
-          }
-
-          const currentMarker = new window.kakao.maps.Marker({
-            position: new window.kakao.maps.LatLng(
-              initialLatitude,
-              initialLongitude,
-            ),
-          });
-          currentMarker.setMap(newMap);
-          setMyLocation({ info: myLocation.info, marker: currentMarker });
-        }
-      }
-    });
-  };
-
   useEffect(() => {
     if (map != null) {
+      removeMarker();
+
       places.forEach((place, index) => {
         const placePosition = new window.kakao.maps.LatLng(place.y, place.x);
         const marker = addMarker(placePosition, index, place);
@@ -108,7 +113,8 @@ const KakaoMap: React.FC = () => {
         });
 
         window.kakao.maps.event.addListener(marker, "mouseover", () => {
-          console.log("Mouseover event fired!");
+          displayInfowindow(marker, place.place_name);
+          map.panTo(placePosition);
         });
 
         window.kakao.maps.event.addListener(marker, "mouseout", () => {
@@ -117,6 +123,43 @@ const KakaoMap: React.FC = () => {
       });
     }
   }, [places, map]);
+
+  const removeMarker = () => {
+    console.log("Removing markers:", currentMarkers);
+    currentMarkers.forEach(marker => {
+      marker.setMap(null);
+    });
+    setCurrentMarkers([]);
+  };
+
+  const displayPlaces = (places: Place[]) => {
+    const bounds = new window.kakao.maps.LatLngBounds();
+    removeAllChildNods(document.getElementById("placesList"));
+    removeMarker();
+
+    places.forEach((place, index) => {
+      const placePosition = new window.kakao.maps.LatLng(place.y, place.x);
+      const marker = addMarker(placePosition, index, place);
+
+      const itemEl = getListItem(index, place);
+      itemEl.onmouseover = () => {
+        displayInfowindow(marker, place.place_name);
+      };
+      itemEl.onmouseout = () => {
+        infowindow.close();
+      };
+
+      bounds.extend(placePosition);
+    });
+
+    setPlaces(places);
+
+    if (map != null) {
+      map.setBounds(bounds);
+    } else {
+      console.error("map 객체가 유효하지 않습니다.");
+    }
+  };
 
   const addMarker = (
     position: kakao.maps.LatLng,
@@ -144,30 +187,16 @@ const KakaoMap: React.FC = () => {
     });
 
     marker.setMap(map);
-    markers.push(marker);
-    // setMarkers(prevMarkers => [...prevMarkers, marker]);
-
-    // window.kakao.maps.event.addListener(marker, "click", () => {
-    //   displayInfowindow(marker, place.place_name);
-    // });
-
-    // window.kakao.maps.event.addListener(marker, "mouseover", () => {
-    //   console.log("Mouseover event fired!");
-    //   displayInfowindow(marker, place.place_name);
-    // });
-
-    // window.kakao.maps.event.addListener(marker, "mouseout", () => {
-    //   infowindow.close();
-    // });
 
     return marker;
   };
 
-  const displayInfowindow = (marker: Marker, title: string) => {
+  const displayInfowindow = (marker: kakao.maps.Marker, title: string) => {
     try {
       const content = `<div style="padding:5px;z-index:1;">${title}</div>`;
       infowindow.setContent(content);
       infowindow.open(map, marker);
+      map.panTo(marker.getPosition());
     } catch (error) {
       console.log(error);
     }
@@ -203,53 +232,6 @@ const KakaoMap: React.FC = () => {
     } else if (status === window.kakao.maps.services.Status.ERROR) {
       alert("검색 결과 중 오류가 발생했습니다.");
     }
-  };
-
-  const displayPlaces = (places: Place[]) => {
-    const bounds = new window.kakao.maps.LatLngBounds();
-    removeAllChildNods(document.getElementById("placesList"));
-    removeMarker();
-
-    places.forEach((place, index) => {
-      const placePosition = new window.kakao.maps.LatLng(place.y, place.x);
-      const marker = addMarker(placePosition, index, place);
-
-      // 마우스오버, 마우스아웃 이벤트에 대한 리스너 등록
-      window.kakao.maps.event.addListener(marker, "mouseover", () => {
-        console.log("Mouseover event fired!");
-        console.log("infowindow:", infowindow);
-        displayInfowindow(marker, place.place_name);
-      });
-
-      window.kakao.maps.event.addListener(marker, "mouseout", () => {
-        infowindow.close();
-      });
-
-      const itemEl = getListItem(index, place);
-      itemEl.onmouseover = () => {
-        displayInfowindow(marker, place.place_name);
-      };
-      itemEl.onmouseout = () => {
-        infowindow.close();
-      };
-
-      bounds.extend(placePosition);
-    });
-
-    setPlaces(places);
-
-    if (map != null) {
-      map.setBounds(bounds);
-    } else {
-      console.error("map 객체가 유효하지 않습니다.");
-    }
-  };
-
-  const removeMarker = () => {
-    markers.forEach(marker => {
-      marker.setMap(null);
-    });
-    setMarkers([]);
   };
 
   const displayPagination = (pagination: Pagination) => {
@@ -315,6 +297,9 @@ const KakaoMap: React.FC = () => {
     return el;
   };
 
+  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setWord(e.target.value);
+  };
   return (
     <KakaoMapWrap>
       <div id="map" />
@@ -330,12 +315,13 @@ const KakaoMap: React.FC = () => {
                 );
               }}
             >
-              키워드 :{" "}
+              키워드 :
               <input
                 type="text"
-                defaultValue="이태원 맛집"
+                value={word}
                 id="keyword"
                 size={15}
+                onChange={handleInputValue}
               />
               <button type="submit">검색하기</button>
             </form>
