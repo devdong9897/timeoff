@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { KakaoMapWrap } from "../styles/KakaoStyle";
 
 interface Place {
   place_name: string;
@@ -24,50 +25,152 @@ declare global {
     kakao: any;
   }
 }
+
 const KakaoMap: React.FC = () => {
   const [markers, setMarkers] = useState<Marker[]>([]);
   const [map, setMap] = useState<any>(null);
   const [places, setPlaces] = useState<Place[]>([]);
   const [infowindow, setInfowindow] = useState<any>(null);
-  const [myLocation, setMyLocation] = useState<
-    { latitude: number; longitude: number } | string
-  >("");
-  console.log(places);
+  const [myLocation, setMyLocation] = useState<{
+    info: { latitude: number; longitude: number } | string;
+    marker: any | null;
+  }>({ info: "", marker: null });
+
   console.log(myLocation);
   console.log(setMap);
+
   useEffect(() => {
     if (navigator.geolocation != null) {
       navigator.geolocation.getCurrentPosition(
         position => {
           setMyLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            info: {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            },
+            marker: null,
           });
+          initMap(position.coords.latitude, position.coords.longitude);
         },
         error => {
-          console.error("Error getting geolocation:", error);
+          console.error(error);
+          window.alert("현재 위치를 알 수 없습니다.");
         },
         { enableHighAccuracy: true },
       );
     } else {
-      window.alert("현재위치를 알수 없습니다.");
+      window.alert("현재 위치를 알 수 없습니다.");
     }
-    initMap();
   }, []);
 
-  const initMap = () => {
+  const initMap = (initialLatitude: number, initialLongitude: number) => {
     window.kakao.maps.load(() => {
       const mapContainer = document.getElementById("map");
       if (mapContainer != null) {
         const options = {
-          center: new kakao.maps.LatLng(37.566826, 126.9786567),
-          level: 3,
+          center: new window.kakao.maps.LatLng(
+            initialLatitude,
+            initialLongitude,
+          ),
+          level: 5,
         };
         const newMap = new window.kakao.maps.Map(mapContainer, options);
         setMap(newMap);
         setInfowindow(new window.kakao.maps.InfoWindow({ zIndex: 1 }));
+
+        if (typeof myLocation !== "string") {
+          if (myLocation.marker !== null) {
+            myLocation.marker.setMap(null);
+          }
+
+          const currentMarker = new window.kakao.maps.Marker({
+            position: new window.kakao.maps.LatLng(
+              initialLatitude,
+              initialLongitude,
+            ),
+          });
+          currentMarker.setMap(newMap);
+          setMyLocation({ info: myLocation.info, marker: currentMarker });
+        }
       }
     });
+  };
+
+  useEffect(() => {
+    if (map != null) {
+      places.forEach((place, index) => {
+        const placePosition = new window.kakao.maps.LatLng(place.y, place.x);
+        const marker = addMarker(placePosition, index, place);
+
+        // 클릭, 마우스오버, 마우스아웃 이벤트에 대한 리스너 등록
+        window.kakao.maps.event.addListener(marker, "click", () => {
+          displayInfowindow(marker, place.place_name);
+        });
+
+        window.kakao.maps.event.addListener(marker, "mouseover", () => {
+          console.log("Mouseover event fired!");
+        });
+
+        window.kakao.maps.event.addListener(marker, "mouseout", () => {
+          infowindow.close();
+        });
+      });
+    }
+  }, [places, map]);
+
+  const addMarker = (
+    position: kakao.maps.LatLng,
+    idx: number,
+    place: Place,
+  ) => {
+    const imageSrc =
+      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png";
+    const imageSize = new window.kakao.maps.Size(36, 37);
+    const imgOptions = {
+      spriteSize: new window.kakao.maps.Size(36, 691),
+      spriteOrigin: new window.kakao.maps.Point(0, idx * 46 + 10),
+      offset: new window.kakao.maps.Point(13, 37),
+    };
+    const markerImage = new window.kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imgOptions,
+    );
+
+    // 마커 생성 및 지도에 추가
+    const marker = new window.kakao.maps.Marker({
+      position,
+      image: markerImage,
+    });
+
+    marker.setMap(map);
+    markers.push(marker);
+    // setMarkers(prevMarkers => [...prevMarkers, marker]);
+
+    // window.kakao.maps.event.addListener(marker, "click", () => {
+    //   displayInfowindow(marker, place.place_name);
+    // });
+
+    // window.kakao.maps.event.addListener(marker, "mouseover", () => {
+    //   console.log("Mouseover event fired!");
+    //   displayInfowindow(marker, place.place_name);
+    // });
+
+    // window.kakao.maps.event.addListener(marker, "mouseout", () => {
+    //   infowindow.close();
+    // });
+
+    return marker;
+  };
+
+  const displayInfowindow = (marker: Marker, title: string) => {
+    try {
+      const content = `<div style="padding:5px;z-index:1;">${title}</div>`;
+      infowindow.setContent(content);
+      infowindow.open(map, marker);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const searchPlaces = (keyword: string) => {
@@ -85,14 +188,13 @@ const KakaoMap: React.FC = () => {
     pagination: Pagination,
   ) => {
     if (status === window.kakao.maps.services.Status.OK) {
-      // 데이터를 Place[]로 변환
       const places = data.map(item => ({
         place_name: item.place_name,
         road_address_name: item.road_address_name,
         address_name: item.address_name,
         phone: item.phone,
-        x: parseFloat(item.x), // 문자열을 숫자로 변환
-        y: parseFloat(item.y), // 문자열을 숫자로 변환
+        x: parseFloat(item.x),
+        y: parseFloat(item.y),
       }));
       displayPlaces(places);
       displayPagination(pagination);
@@ -110,12 +212,12 @@ const KakaoMap: React.FC = () => {
 
     places.forEach((place, index) => {
       const placePosition = new window.kakao.maps.LatLng(place.y, place.x);
-      const marker = addMarker(placePosition, index);
-      const itemEl = getListItem(index, place);
+      const marker = addMarker(placePosition, index, place);
 
-      bounds.extend(placePosition);
-
+      // 마우스오버, 마우스아웃 이벤트에 대한 리스너 등록
       window.kakao.maps.event.addListener(marker, "mouseover", () => {
+        console.log("Mouseover event fired!");
+        console.log("infowindow:", infowindow);
         displayInfowindow(marker, place.place_name);
       });
 
@@ -123,15 +225,15 @@ const KakaoMap: React.FC = () => {
         infowindow.close();
       });
 
+      const itemEl = getListItem(index, place);
       itemEl.onmouseover = () => {
         displayInfowindow(marker, place.place_name);
       };
-
       itemEl.onmouseout = () => {
         infowindow.close();
       };
 
-      setMarkers(prevMarkers => [...prevMarkers, marker]);
+      bounds.extend(placePosition);
     });
 
     setPlaces(places);
@@ -141,43 +243,6 @@ const KakaoMap: React.FC = () => {
     } else {
       console.error("map 객체가 유효하지 않습니다.");
     }
-  };
-
-  const getListItem = (index: number, place: Place) => {
-    const el = document.createElement("li");
-    let itemStr =
-      `<span class="markerbg marker_${index + 1}"></span>` +
-      '<div class="info">' +
-      `   <h5>${place.place_name}</h5>`;
-
-    if (place.road_address_name !== undefined) {
-      itemStr +=
-        `    <span>${place.road_address_name}</span>` +
-        `   <span class="jibun gray">${place.address_name}</span>`;
-    } else {
-      itemStr += `    <span>${place.address_name}</span>`;
-    }
-
-    itemStr += `  <span class="tel">${place.phone}</span>` + "</div>";
-
-    el.innerHTML = itemStr;
-    el.className = "item";
-
-    return el;
-  };
-
-  const addMarker = (position: kakao.maps.LatLng, idx: number) => {
-    const marker = new window.kakao.maps.Marker({
-      position,
-    });
-
-    window.kakao.maps.event.addListener(marker, "click", () => {
-      displayInfowindow(marker, places[idx].place_name);
-    });
-
-    marker.setMap(map);
-    markers.push(marker);
-    return marker;
   };
 
   const removeMarker = () => {
@@ -211,12 +276,6 @@ const KakaoMap: React.FC = () => {
     }
   };
 
-  const displayInfowindow = (marker: Marker, title: string) => {
-    const content = `<div style="padding:5px;z-index:1;">${title}</div>`;
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
-  };
-
   const removeAllChildNods = (el: HTMLElement | null) => {
     while (el?.hasChildNodes() === true) {
       const child = el.lastChild;
@@ -228,18 +287,38 @@ const KakaoMap: React.FC = () => {
     }
   };
 
+  const getListItem = (index: number, place: Place) => {
+    const el = document.createElement("li");
+    let itemStr =
+      `<span class="markerbg marker_${index + 1}"></span>` +
+      '<div class="info">' +
+      `   <h5>${place.place_name}</h5>`;
+
+    if (place.road_address_name !== undefined) {
+      itemStr +=
+        `    <span>${place.road_address_name}</span>` +
+        `   <span class="jibun gray">${place.address_name}</span>`;
+    } else {
+      itemStr += `    <span>${place.address_name}</span>`;
+    }
+
+    itemStr += `  <span class="tel">${place.phone}</span>` + "</div>";
+
+    el.innerHTML = itemStr;
+    el.className = "item";
+
+    const placesList = document.getElementById("placesList");
+    if (placesList != null) {
+      placesList.appendChild(el);
+    }
+
+    return el;
+  };
+
   return (
-    <div className="map_wrap">
-      <div
-        id="map"
-        style={{
-          width: "100%",
-          height: "700px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      />
-      <div id="menu_wrap" className="bg_white">
+    <KakaoMapWrap>
+      <div id="map" />
+      <div id="menu-wrap" className="bg-white">
         <div className="option">
           <div>
             <form
@@ -266,7 +345,7 @@ const KakaoMap: React.FC = () => {
         <ul id="placesList" />
         <div id="pagination" />
       </div>
-    </div>
+    </KakaoMapWrap>
   );
 };
 
