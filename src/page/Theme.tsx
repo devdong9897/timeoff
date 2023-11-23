@@ -2,14 +2,20 @@ import ThemeList from "../components/theme/ThemeList";
 import ThemeMap from "../components/theme/ThemeMap";
 import ThemeTitle from "../components/theme/ThemeTitle";
 import { ThemeContainerWidths } from "../../src/styles/ThemeTitleStyle";
+import { useState } from "react";
+import mapData from "../api/mapData.json";
 
 const Theme = () => {
+  const [mapNumber, setMapNumber] = useState<number>(0);
+  // const [location, setLocation] = useState(mapData.recotrip);
+
+  console.log(mapData.recotrip);
   return (
     <>
       <ThemeTitle />
       <ThemeContainerWidths>
-        <ThemeMap />
-        <ThemeList />
+        <ThemeMap setMapNumber={setMapNumber} />
+        <ThemeList mapNumber={mapNumber} />
       </ThemeContainerWidths>
     </>
   );
