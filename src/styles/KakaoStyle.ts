@@ -60,102 +60,104 @@ export const KakaoMapWrap = styled.div`
 
   #placesList {
     li {
+      position: relative;
+      border-bottom: 1px solid #888;
+      overflow: hidden;
+      cursor: pointer;
       list-style: none;
-      .item {
-        position: relative;
-        border-bottom: 1px solid #888;
+      min-height: 65px;
+
+      span {
+        display: block;
+        margin-top: 4px;
+      }
+
+      h5 {
+        text-overflow: ellipsis;
         overflow: hidden;
-        cursor: pointer;
-        min-height: 65px;
+        white-space: nowrap;
+      }
 
-        span {
-          display: block;
-          margin-top: 4px;
+      .info {
+        padding: 10px 0 10px 55px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        .gray {
+          color: #8a8a8a;
         }
 
-        h5,
-        .info {
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
+        .jibun {
+          padding-left: 26px;
+          background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+            no-repeat;
         }
 
-        .info {
-          padding: 10px 0 10px 55px;
-
-          .gray {
-            color: #8a8a8a;
-          }
-
-          .jibun {
-            padding-left: 26px;
-            background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
-              no-repeat;
-          }
-
-          .tel {
-            color: #009900;
-          }
+        .tel {
+          color: #009900;
         }
       }
     }
-
-    .item .markerbg {
-      float: left;
-      position: absolute;
-      width: 36px;
-      height: 37px;
-      margin: 10px 0 0 10px;
-      background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
-        no-repeat;
+    li:hover {
+      background-color: #6edcff;
     }
+  }
 
-    .item {
-      .marker_1 {
-        background-position: 0 -10px;
-      }
-      .marker_2 {
-        background-position: 0 -56px;
-      }
-      .marker_3 {
-        background-position: 0 -102px;
-      }
-      .marker_4 {
-        background-position: 0 -148px;
-      }
-      .marker_5 {
-        background-position: 0 -194px;
-      }
-      .marker_6 {
-        background-position: 0 -240px;
-      }
-      .marker_7 {
-        background-position: 0 -286px;
-      }
-      .marker_8 {
-        background-position: 0 -332px;
-      }
-      .marker_9 {
-        background-position: 0 -378px;
-      }
-      .marker_10 {
-        background-position: 0 -423px;
-      }
-      .marker_11 {
-        background-position: 0 -470px;
-      }
-      .marker_12 {
-        background-position: 0 -516px;
-      }
-      .marker_13 {
-        background-position: 0 -562px;
-      }
-      .marker_14 {
-        background-position: 0 -608px;
-      }
-      .marker_15 {
-        background-position: 0 -654px;
-      }
+  .item .markerbg {
+    float: left;
+    position: absolute;
+    width: 36px;
+    height: 37px;
+    margin: 10px 0 0 10px;
+    background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+      no-repeat;
+  }
+
+  .item {
+    .marker_1 {
+      background-position: 0 -10px;
+    }
+    .marker_2 {
+      background-position: 0 -56px;
+    }
+    .marker_3 {
+      background-position: 0 -102px;
+    }
+    .marker_4 {
+      background-position: 0 -148px;
+    }
+    .marker_5 {
+      background-position: 0 -194px;
+    }
+    .marker_6 {
+      background-position: 0 -240px;
+    }
+    .marker_7 {
+      background-position: 0 -286px;
+    }
+    .marker_8 {
+      background-position: 0 -332px;
+    }
+    .marker_9 {
+      background-position: 0 -378px;
+    }
+    .marker_10 {
+      background-position: 0 -423px;
+    }
+    .marker_11 {
+      background-position: 0 -470px;
+    }
+    .marker_12 {
+      background-position: 0 -516px;
+    }
+    .marker_13 {
+      background-position: 0 -562px;
+    }
+    .marker_14 {
+      background-position: 0 -608px;
+    }
+    .marker_15 {
+      background-position: 0 -654px;
     }
   }
 
