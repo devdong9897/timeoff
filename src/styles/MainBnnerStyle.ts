@@ -16,7 +16,6 @@ margin-bottom: 150px;
         left: 10%;
         width: 500px;
         height: 400px;
-        background: black;
       }
       .top-info {
         position: absolute;
@@ -37,17 +36,16 @@ margin-bottom: 150px;
     }
   }
   .main-section {
-    width: 100%;
-    height: 100%;
-    /* height: 500px; */
-    background: cyan;
-    .progress-width {
+    .progress-bar {
       position: absolute;
       width: 500px;
       height: 40px;
       right: 22.17%;
       margin-top: 20px;
       background: red;
+    }
+    button{
+      display: block;
     }
   }
 `;
