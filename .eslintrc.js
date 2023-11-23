@@ -3,21 +3,22 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'standard-with-typescript', 'prettier'],
+  extends: ["plugin:react/recommended", "standard-with-typescript", "prettier"],
   overrides: [],
   parserOptions: {
-    project: '**/tsconfig.json',
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    project: "**/tsconfig.json",
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  plugins: ['react'],
+  plugins: ["react"],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    'react/react-in-jsx-scope': 'off',
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
   },
   settings: {
     react: {
-      version: '18.0.28',
+      version: "18.0.28",
     },
   },
 };
