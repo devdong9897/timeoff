@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Bnner } from "../styles/MainBnnerStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface MainSlide {
   pk: number;
   title: string;
   img: string;
-  backgroundColor: string;
+  // backgroundColor: string;
   link: string;
 }
 
@@ -15,126 +20,102 @@ const MainBnner: React.FC = () => {
       pk: 1,
       title: "1번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#f0f0f0",
-      link: "https://www.naver.com",
+      // backgroundColor: "#f0f0f0",
+      link: "/tlog",
     },
     {
       pk: 2,
       title: "2번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#e0e0e0",
-      link: "https://www.naver.com",
+      // backgroundColor: "#e0e0e0",
+      link: "/tlog",
     },
     {
       pk: 3,
       title: "3번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#d0d0d0",
-      link: "https://www.naver.com",
+      // backgroundColor: "#d0d0d0",
+      link: "/tlog",
     },
     {
       pk: 4,
       title: "걸어서 말고 차타고 테마 여행",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#c0c0c0",
-      link: "https://www.naver.com",
+      // backgroundColor: "#c0c0c0",
+      link: "/tlog",
     },
     {
       pk: 5,
       title: "5번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#b0b0b0",
-      link: "https://www.naver.com",
+      // backgroundColor: "#b0b0b0",
+      link: "/tlog",
     },
   ];
 
-  const [mainPage, setMainPage] = useState(0);
-  const [autoplay, setAutoplay] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const totalSlide = mainData.length - 1;
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRef = useRef<any>(null);
 
-  const toPrev = () => {
-    setMainPage(prev => (prev - 1 + mainData.length) % mainData.length);
-  };
-
-  const toNext = () => {
-    setMainPage(prev => (prev + 1) % mainData.length);
-  };
-
-  const toggleAutoplay = () => {
-    setAutoplay(prev => !prev);
-  };
-
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    const handleAutoplay = () => {
-      if (autoplay) {
-        toNext();
-        intervalId = setTimeout(handleAutoplay, 4000);
-      }
-    };
-
-    if (autoplay) {
-      intervalId = setTimeout(handleAutoplay, 4000);
+  const prevSlide = () => {
+    if (currentSlide >= totalSlide) {
+      setCurrentSlide(0);
+    } else {
+      setCurrentSlide(currentSlide + 1);
     }
+  };
 
-    return () => {
-      clearTimeout(intervalId);
-    };
-  }, [autoplay, mainPage]);
-
-  useEffect(() => {
-    setProgress(0);
-    const intervalId = setInterval(() => {
-      setProgress(prev => Math.min(prev + 1, 100));
-    }, 40);
-
-    const nextSlideIntervalId = setInterval(() => {
-      toNext();
-    }, 4000);
-
-    return () => {
-      clearInterval(intervalId);
-      clearInterval(nextSlideIntervalId);
-    };
-  }, [mainPage]);
-
-  useEffect(() => {
-    if (progress === 100) {
-      setProgress(0);
+  const nextSlide = () => {
+    if (currentSlide === 0) {
+      setCurrentSlide(totalSlide);
+    } else {
+      setCurrentSlide(currentSlide - 1);
     }
-  }, [progress]);
+  };
+
+  useEffect(() => {
+    slideRef.current.style.transition = "all 1.0s ease-in-out";
+    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
+  }, [currentSlide]);
 
   return (
     <Bnner>
-      <div className="main-top">
+      <div className="main-slide">
         {mainData.map((data, index) => (
-          <ul
-            key={data.pk}
-            className={index === mainPage ? "active" : ""}
-            style={{ backgroundColor: data.backgroundColor }}
+          <div
+            className="main-top"
+            ref={slideRef}
+            key={index}
+            style={{ display: index === currentSlide ? "block" : "none" }}
           >
-            <li>
-              <img className="top-img" src={data.img} alt={data.title} />
-            </li>
-            <li className="top-info">
-              <span>{data.title}</span>
-            </li>
-            <li className="top-detail">
-              <a href={data.link} target="_blank" rel="noopener noreferrer">
-                자세히 보기
-              </a>
-            </li>
-          </ul>
+            <ul>
+              <li>
+                <img className="top-img" src={data.img} alt={data.title} />
+              </li>
+              <li className="top-info">
+                <span>{data.title}</span>
+              </li>
+              <li className="top-detail">
+                <a href={data.link} target="_blank" rel="noopener noreferrer">
+                  자세히 보기
+                </a>
+              </li>
+            </ul>
+          </div>
         ))}
       </div>
       <div className="main-section">
-        <div className="progress-bar" style={{ width: `${progress}%` }}></div>
-        <button onClick={toPrev}>이전</button>
-        <button onClick={toggleAutoplay}>
-          {autoplay ? "일시 정지" : "자동 재생"}
+        {/* <div className="progress-bar"></div> */}
+        <div className="current-slide">
+          {currentSlide + 1} /{mainData.length}
+        </div>
+        <button onClick={prevSlide}>
+          <FontAwesomeIcon icon={faChevronLeft} /> 이전
         </button>
-        <button onClick={toNext}>다음</button>
+        <button onClick={nextSlide}>
+          <FontAwesomeIcon icon={faChevronRight} />
+          다음
+        </button>
       </div>
     </Bnner>
   );

@@ -1,15 +1,19 @@
 import styled from "@emotion/styled";
 
 export const Bnner = styled.div`
-margin-bottom: 150px;
+  margin-bottom: 150px;
   .main-top {
     width: 100%;
     height: 400px;
     background: green;
+    display: flex;
     ul {
       position: relative;
       width: 100%;
       height: 500px;
+      float: right;
+    
+
       .top-img {
         position: absolute;
         top: 15%;
@@ -36,6 +40,7 @@ margin-bottom: 150px;
     }
   }
   .main-section {
+    position: relative;
     .progress-bar {
       position: absolute;
       width: 500px;
@@ -44,7 +49,7 @@ margin-bottom: 150px;
       margin-top: 20px;
       background: red;
     }
-    button{
+    button {
       display: block;
     }
   }
