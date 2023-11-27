@@ -1,130 +1,232 @@
 import React, { useEffect, useState } from "react";
 import { KakaoMapWrap } from "../styles/KakaoStyle";
-import * as KakaoModule from "./KakaoModule";
+import type { propsType } from "../page/TravelMap";
+// import * as KakaoMapModule from "./KakaoMapModule";
 
-const KakaoMap: React.FC = () => {
-  const [map, setMap] = useState<any>(null);
-  const [places] = useState<KakaoModule.Place[]>([]);
-  const [infowindow, setInfowindow] = useState<any>(null);
-  const [word, setWord] = useState<string>("");
-  const [currentMarkers, setCurrentMarkers] = useState<kakao.maps.Marker[]>([]);
-  const [myLocation, setMyLocation] = useState<{
-    info: { latitude: number; longitude: number } | string;
-    marker: any | null;
-  }>({ info: "", marker: null });
+interface Place {
+  place_name: string;
+  road_address_name: string;
+  address_name: string;
+  phone: string;
+  place_url: string;
+}
 
-  console.log(myLocation);
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
-  useEffect(() => {
-    KakaoModule.getCurrentLocation(setMyLocation, setMap, setInfowindow);
-  }, []);
-  useEffect(() => {
-    // 초기 위치 정보를 사용하여 initMap 함수 호출
-    if (typeof myLocation.info !== "string") {
-      KakaoModule.initMap(
-        myLocation.info.latitude,
-        myLocation.info.longitude,
-        setMap,
-        setInfowindow,
-        myLocation,
-        setMyLocation,
-      );
-    }
-  }, [myLocation]);
+const KakaoMap = (props: propsType) => {
+  const [markers, setMarkers] = useState<kakao.maps.Marker[]>([]);
 
   useEffect(() => {
-    KakaoModule.removeMarker(currentMarkers, setCurrentMarkers);
+    const container = document.getElementById("map") as HTMLElement;
+    const options = {
+      center: new kakao.maps.LatLng(37.566826, 126.9786567),
+      level: 6,
+    };
+    const map = new kakao.maps.Map(container, options);
+    const ps = new kakao.maps.services.Places();
+    const infoWindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
-    const bounds = new window.kakao.maps.LatLngBounds();
+    const placesSearchCB = (data: any, status: any, pagination: any) => {
+      if (status === kakao.maps.services.Status.OK) {
+        // 정상적으로 검색이 완료됐으면
+        // 검색 목록과 마커를 표출
+        displayPlaces(data);
 
-    places.forEach((place, index) => {
-      const placePosition = new window.kakao.maps.LatLng(place.y, place.x);
-      const marker = KakaoModule.addMarker(placePosition, index, place, map);
-      const itemEl = KakaoModule.getListItem(index, place);
+        // 페이지 번호를 표출
+        displayPagination(pagination);
+      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+        alert("검색 결과가 존재하지 않습니다.");
+      } else if (status === kakao.maps.services.Status.ERROR) {
+        alert("검색 결과 중 오류가 발생했습니다.");
+      }
+    };
 
-      // 클릭, 마우스오버, 마우스아웃 이벤트에 대한 리스너 등록
-      window.kakao.maps.event.addListener(marker, "click", () => {
-        KakaoModule.displayInfowindow(
-          marker,
-          place.place_name,
-          map,
-          infowindow,
-        );
-      });
+    const searchPlaces = () => {
+      const keyword = props.searchKeyword;
+      if (keyword.trim().length === 0) {
+        return false;
+      }
+      ps.keywordSearch(keyword, placesSearchCB);
+    };
 
-      window.kakao.maps.event.addListener(marker, "mouseover", () => {
-        KakaoModule.displayInfowindow(
-          marker,
-          place.place_name,
-          map,
-          infowindow,
-        );
-        map.panTo(placePosition);
-      });
+    searchPlaces();
 
-      window.kakao.maps.event.addListener(marker, "mouseout", () => {
-        infowindow.close();
-      });
+    const displayInfowindow = (marker: any, title: string) => {
+      const content =
+        '<div style="padding:5px;z-index:1;" class="marker-title">' +
+        title +
+        "</div>";
 
-      itemEl.onmouseover = () => {
-        KakaoModule.displayInfowindow(
-          marker,
-          place.place_name,
-          map,
-          infowindow,
-        );
-      };
+      infoWindow.setContent(content);
+      infoWindow.open(map, marker);
+    };
 
-      itemEl.onmouseout = () => {
-        infowindow.close();
-      };
+    const displayPlaces = (places: string | any) => {
+      const listEl = document.getElementById("places-list");
+      const resultEl = document.getElementById("menu_wrap");
+      const fragment = document.createDocumentFragment();
+      const bounds = new kakao.maps.LatLngBounds();
 
-      bounds.extend(placePosition);
-    });
+      if (listEl != null) {
+        removeAllChildNods(listEl);
+      }
 
-    if (map != null) {
+      removeMarker();
+
+      for (let i = 0; i < places.length; i++) {
+        const placePosition = new kakao.maps.LatLng(places[i].y, places[i].x);
+        const marker = addMarker(placePosition, i, undefined);
+        const itemEl = getListItem(i, places[i]);
+
+        bounds.extend(placePosition);
+
+        const attachListeners = (
+          marker: kakao.maps.event.EventTarget,
+          title: string,
+        ) => {
+          const handleMouseOver = () => {
+            displayInfowindow(marker, title);
+          };
+          const handleMouseOut = () => {
+            infoWindow.close();
+          };
+          kakao.maps.event.addListener(marker, "mouseover", handleMouseOver);
+          kakao.maps.event.addListener(marker, "mouseout", handleMouseOut);
+
+          itemEl.addEventListener("mouseover", handleMouseOver);
+          itemEl.addEventListener("mouseout", handleMouseOut);
+        };
+
+        attachListeners(marker, places[i].place_name);
+        fragment.appendChild(itemEl);
+      }
+
+      if (listEl != null) {
+        listEl.appendChild(fragment);
+      }
+
+      if (resultEl != null) {
+        resultEl.scrollTop = 0;
+      }
       map.setBounds(bounds);
-    } else {
-      console.error("map 객체가 유효하지 않습니다.");
-    }
-  }, [places, map, infowindow, currentMarkers]);
+    };
 
-  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setWord(e.target.value);
-  };
+    const getListItem = (index: number, places: Place) => {
+      const el = document.createElement("li");
+      let itemStr =
+        `<span class="markerbg marker_${index + 1}"></span>` +
+        '<div class="info">' +
+        `   <h5>${places.place_name}</h5>`;
+
+      if (places.road_address_name !== undefined) {
+        itemStr +=
+          `    <span>${places.road_address_name}</span>` +
+          `   <span class="jibun gray">${places.address_name}</span>`;
+      } else {
+        itemStr += `    <span>${places.address_name}</span>`;
+      }
+
+      itemStr += `  <span class="tel">${places.phone}</span>` + "</div>";
+
+      el.innerHTML = itemStr;
+      el.className = "item";
+
+      return el;
+    };
+
+    const addMarker = (position: any, idx: number, title: undefined) => {
+      const imageSrc =
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png";
+      const imageSize = new kakao.maps.Size(36, 37);
+      const imgOptions = {
+        spriteSize: new kakao.maps.Size(36, 691),
+        spriteOrigin: new kakao.maps.Point(0, idx * 46 + 10),
+        offset: new kakao.maps.Point(13, 37),
+      };
+      const markerImage = new kakao.maps.MarkerImage(
+        imageSrc,
+        imageSize,
+        imgOptions,
+      );
+      const marker = new kakao.maps.Marker({
+        position,
+        image: markerImage,
+      });
+
+      marker.setMap(map);
+      markers.push(marker);
+
+      return marker;
+    };
+
+    const removeMarker = () => {
+      for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+      setMarkers([]);
+    };
+
+    const displayPagination = (pagination: {
+      last: number;
+      current: number;
+      gotoPage: (arg0: number) => void;
+    }) => {
+      const paginationEl = document.getElementById("pagination") as HTMLElement;
+      let i;
+
+      while (paginationEl.hasChildNodes()) {
+        if (paginationEl.lastChild != null) {
+          paginationEl.removeChild(paginationEl.lastChild);
+        }
+      }
+      const fragment = document.createDocumentFragment();
+
+      for (i = 1; i <= pagination.last; i++) {
+        const el = document.createElement("a");
+        el.href = "#";
+        el.innerHTML = i.toString();
+
+        if (i === pagination.current) {
+          el.className = "on";
+        } else {
+          el.onclick = (function (i) {
+            return function () {
+              pagination.gotoPage(i);
+            };
+          })(i);
+        }
+
+        fragment.appendChild(el);
+      }
+      paginationEl.appendChild(fragment);
+    };
+
+    const removeAllChildNods = (el: HTMLElement) => {
+      while (el.hasChildNodes()) {
+        if (el.lastChild != null) {
+          el.removeChild(el.lastChild);
+        }
+      }
+    };
+  }, [props.searchKeyword]);
 
   return (
     <KakaoMapWrap>
-      <div id="map" />
+      <div id="map" className="map"></div>
       <div id="menu-wrap" className="bg-white">
         <div className="option">
           <div>
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                KakaoModule.searchPlaces(
-                  (document.getElementById("keyword") as HTMLInputElement)
-                    .value,
-                  map,
-                  KakaoModule.placesSearchCB,
-                );
-              }}
-            >
-              키워드 :
-              <input
-                type="text"
-                value={word}
-                id="keyword"
-                size={15}
-                onChange={handleInputValue}
-              />
-              <button type="submit">검색하기</button>
-            </form>
+            <span id="keyword">{props.searchKeyword}</span>
+            
           </div>
         </div>
         <hr />
-        <ul id="placesList" />
-        <div id="pagination" />
+        <ul id="places-list"></ul>
+        <div id="pagination"></div>
       </div>
     </KakaoMapWrap>
   );

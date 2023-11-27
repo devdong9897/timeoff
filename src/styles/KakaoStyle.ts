@@ -25,15 +25,16 @@ export const KakaoMapWrap = styled.div`
 
   #menu-wrap {
     position: absolute;
-    top: 0;
+    top: 5%;
     left: 0;
     bottom: 0;
     width: 250px;
+    height: 600px;
     margin: 10px 0 30px 10px;
     padding: 5px;
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.7);
-    z-index: 1;
+    z-index: 2;
     font-size: 12px;
     border-radius: 10px;
 
@@ -58,7 +59,7 @@ export const KakaoMapWrap = styled.div`
     }
   }
 
-  #placesList {
+  #places-list {
     li {
       position: relative;
       border-bottom: 1px solid #888;
