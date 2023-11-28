@@ -3,17 +3,13 @@ import styled from "@emotion/styled";
 export const Bnner = styled.div`
   margin-bottom: 150px;
   .main-top {
-    width: 100%;
-    height: 400px;
-    background: green;
     display: flex;
+    height: 400px;
     ul {
       position: relative;
       width: 100%;
       height: 500px;
       float: right;
-    
-
       .top-img {
         position: absolute;
         top: 15%;
