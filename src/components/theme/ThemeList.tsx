@@ -1,5 +1,3 @@
-// ThemeList 컴포넌트
-
 import React from "react";
 import {
   ThemeListContainer,
