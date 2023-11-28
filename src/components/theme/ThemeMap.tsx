@@ -1,37 +1,35 @@
+import React, { useState } from "react";
 import { ThemeMapContainer } from "../../styles/ThemeMapStyle";
 import mapData from "../../api/mapData.json";
 
-// interface mapType {
-//   id: string;
-//   name: string;
-//   d: string;
-//   x: string;
-//   y: string;
-//   fill: string;
-//   fontSize: string;
-//   fontWeight: string;
-//   cursor: string;ss
-//   title: string;
-// }
-interface setStationType {
+interface ThemeMapProps {
   setMapNumber: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ThemeMap = ({ setMapNumber }: setStationType) => {
-  console.log(setMapNumber);
+interface styleType {
+  id: string;
+  hfil: string;
+}
 
+const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
   const mapDatas = mapData.location;
-  console.log(mapData.location);
-
-  const handleClick = (index: number) => {
-    console.log(index);
+  const [eobject, setObject] = useState<styleType | null>({ id: "", hfil: "" });
+  const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const handleClick = (index: number, id: string, hfil: string) => {
     setMapNumber(index);
-    console.log(mapData.recotrip[index]);
+    setClickedIndex(index);
   };
-
+  const handleStyleClick = (id: string, hfil: string) => {
+    console.log(hfil);
+    const data = {
+      id: id,
+      hfil: hfil,
+    };
+    setObject(data);
+  };
   return (
-    <ThemeMapContainer>
-      <div className="map-box">
+    <ThemeMapContainer id={eobject?.id} uu={eobject?.hfil}>
+      <div className={`map-box ${clickedIndex !== null ? "clicked" : ""}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 524 631"
@@ -42,7 +40,10 @@ const ThemeMap = ({ setMapNumber }: setStationType) => {
             <g
               key={index}
               onClick={() => {
-                handleClick(index);
+                handleClick(index, item.id, item.hfil);
+              }}
+              onMouseEnter={() => {
+                handleStyleClick(item.id, item.hfil);
               }}
             >
               <path id={item.id} name={item.name} d={item.d} />
