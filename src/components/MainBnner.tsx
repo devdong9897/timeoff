@@ -10,7 +10,7 @@ interface MainSlide {
   pk: number;
   title: string;
   img: string;
-  // backgroundColor: string;
+  backgroundColor: string;
   link: string;
 }
 
@@ -20,73 +20,70 @@ const MainBnner: React.FC = () => {
       pk: 1,
       title: "1번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      // backgroundColor: "#f0f0f0",
+      backgroundColor: "rgb(239, 73, 73)",
       link: "/tlog",
     },
     {
       pk: 2,
       title: "2번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      // backgroundColor: "#e0e0e0",
+      backgroundColor: "#ff6a2f",
       link: "/tlog",
     },
     {
       pk: 3,
       title: "3번 슬라이드 테스트",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      // backgroundColor: "#d0d0d0",
+      backgroundColor: "#d2d53c",
       link: "/tlog",
     },
     {
       pk: 4,
       title: "걸어서 말고 차타고 테마 여행",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      // backgroundColor: "#c0c0c0",
+      backgroundColor: "#48d02a",
       link: "/tlog",
     },
     {
       pk: 5,
-      title: "5번 슬라이드 테스트",
+      title: "5번 슬라이드 테스트 이건??????????????????",
       img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      // backgroundColor: "#b0b0b0",
+      backgroundColor: "#2841b1",
       link: "/tlog",
     },
   ];
 
-  const totalSlide = mainData.length - 1;
+  const totalSlide = mainData.length;
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<any>(null);
 
   const prevSlide = () => {
-    if (currentSlide >= totalSlide) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
+    setCurrentSlide(currentSlide === 0 ? totalSlide - 1 : currentSlide - 1);
   };
 
   const nextSlide = () => {
-    if (currentSlide === 0) {
-      setCurrentSlide(totalSlide);
-    } else {
-      setCurrentSlide(currentSlide - 1);
-    }
+    setCurrentSlide(currentSlide + 1 >= totalSlide ? 0 : currentSlide + 1);
   };
 
   useEffect(() => {
-    slideRef.current.style.transition = "all 1.0s ease-in-out";
-    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
+    setTimeout(() => {
+      slideRef.current.style.transition = "all 1.0s ease-in-out";
+      slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
+    }, 0);
   }, [currentSlide]);
 
   return (
     <Bnner>
-      <div className="main-slide">
-        {mainData.map((data, index) => (
+      <div className="main-slide" >
+        {mainData?.map((data, index) => (
           <div
             className="main-top"
-            ref={slideRef}
             key={index}
-            style={{ display: index === currentSlide ? "block" : "none" }}
+            ref={slideRef}
+            style={{
+              display: index === currentSlide ? "block" : "none",
+              backgroundColor: data.backgroundColor,
+            }}
           >
             <ul>
               <li>
