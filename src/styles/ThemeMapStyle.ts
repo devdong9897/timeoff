@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 
-export const ThemeMapContainer = styled.div`
+interface ThemeMapContainerProps {
+  id: string | undefined;
+  uu: string | undefined;
+}
+
+export const ThemeMapContainer = styled.div<ThemeMapContainerProps>`
   .map-box {
     width: 600px;
     height: 830px;
@@ -14,125 +19,34 @@ export const ThemeMapContainer = styled.div`
     font-size: 45px;
     border-radius: 20px;
     svg path {
+      background: red;
+    }
+    svg path {
       transition:
         fill 0.3s,
         filter 0.3s,
         transform 0.3s;
     }
   }
-  svg path:hover {
+
+  svg g:hover text {
     outline: none;
-    fill: #e7e5ae;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-    transform: translateY(-5px);
-  }
-  #busan:hover {
-    outline: none;
-    fill: #e7e5ae;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #daegu:hover {
-    outline: none;
-    fill: #a2ba99;
-    cursor: pointer;
-    padding: 0;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #daejeon:hover {
-    outline: none;
-    fill: #efac68;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #gangwon:hover {
-    outline: none;
-    fill: #d2b6d3;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #gwangju:hover {
-    outline: none;
-    fill: #495477;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #gyeonggi:hover {
-    outline: none;
-    fill: #a5c3df;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #incheon:hover {
-    outline: none;
-    fill: #85a9d1;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #jeju:hover {
-    outline: none;
-    fill: #edbbba;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #north-chungcheong:hover {
-    outline: none;
-    fill: #e1decf;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #north-gyeongsang:hover {
-    outline: none;
-    fill: #9ed7d8;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #north-jeolla:hover {
-    outline: none;
-    fill: #a0a2ba;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #sejong:hover {
-    outline: none;
-    fill: #d5c19f;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #seoul:hover {
-    outline: none;
-    fill: #d2d1e3;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #south-chungcheong:hover {
-    outline: none;
-    fill: #e4de78;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #south-gyeongsang:hover {
-    outline: none;
-    fill: #c5d99f;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #south-jeolla:hover {
-    outline: none;
-    fill: #d0d1e5;
-    cursor: pointer;
-    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
-  }
-  #ulsan:hover {
-    outline: none;
-    fill: #d8b2c3;
     cursor: pointer;
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
   }
 
-  #busan:hover {
+  text {
+    pointer-events: none;
+  }
+  svg path:hover {
     outline: none;
-    fill: red;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+    transform: translateY(-5px);
+  }
+  svg {
+    #${props => props.id} {
+      fill: ${props => props.uu};
+    }
   }
 `;

@@ -7,6 +7,7 @@
       "x": "339",
       "y": "410",
       "fill": "#393939",
+      "hfil": "#e7e5ae",
       "fontSize": "10",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -19,6 +20,7 @@
       "x": "295",
       "y": "340",
       "fill": "#393939",
+      "hfil": "#a2ba99",
       "fontSize": "10",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -31,6 +33,7 @@
       "x": "185",
       "y": "275",
       "fill": "#393939",
+      "hfil": "#efac68",
       "fontSize": "7",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -43,6 +46,7 @@
       "x": "259",
       "y": "100",
       "fill": "#393939",
+      "hfil": "#d2b6d3",
       "fontSize": "14",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -55,6 +59,7 @@
       "x": "130",
       "y": "415",
       "fill": "#393939",
+      "hfil": "#495477",
       "fontSize": "10",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -67,6 +72,7 @@
       "x": "160",
       "y": "170",
       "fill": "#393939",
+      "hfil": "#a5c3df",
       "fontSize": "14",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -79,6 +85,7 @@
       "x": "117",
       "y": "135",
       "fill": "#393939",
+      "hfil": "#85a9d1",
       "fontSize": "7",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -91,6 +98,7 @@
       "x": "100",
       "y": "610",
       "fill": "#393939",
+      "hfil": "#edbbba",
       "fontSize": "14",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -103,6 +111,7 @@
       "x": "210",
       "y": "230",
       "fill": "#393939",
+      "hfil": "#e1decf",
       "fontSize": "12",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -116,6 +125,7 @@
       "x": "300",
       "y": "260",
       "fill": "#393939",
+      "hfil": "#9ed7d8",
       "fontSize": "15",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -128,6 +138,7 @@
       "x": "150",
       "y": "340",
       "fill": "#393939",
+      "hfil": "#a0a2ba",
       "fontSize": "15",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -140,6 +151,7 @@
       "x": "170",
       "y": "250",
       "fill": "#393939",
+      "hfil": "#d5c19f",
       "fontSize": "7",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -152,6 +164,7 @@
       "x": "145",
       "y": "135",
       "fill": "#393939",
+      "hfil": "#d2d1e3",
       "fontSize": "10",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -164,6 +177,7 @@
       "x": "130",
       "y": "260",
       "fill": "#393939",
+      "hfil": "#e4de78",
       "fontSize": "13",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -176,6 +190,7 @@
       "x": "250",
       "y": "390",
       "fill": "#393939",
+      "hfil": "#c5d99f",
       "fontSize": "12",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -188,6 +203,7 @@
       "x": "130",
       "y": "450",
       "fill": "#393939",
+      "hfil": "#d0d1e5",
       "fontSize": "15",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -200,6 +216,7 @@
       "x": "350",
       "y": "365",
       "fill": "#393939",
+      "hfil": "#d8b2c3",
       "fontSize": "10",
       "fontWeight": "bold",
       "cursor": "pointer",
@@ -210,53 +227,79 @@
     [
       {
         "uid": 1,
-        "title": "중문 해수욕장",
-        "img": "https://ak-d.tripcdn.com/images/10031f000001gry63A3B0.jpg?proc=source%2Ftrip",
-        "description": "중문 해수욕장은 제주도의 아름다운 해변 중 하나로 유명합니다. 이곳에서 휴식을 취하고 파도 소리를 즐기세요."
+        "title": "감천 문화마을",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/0f/b4/28/village-view.jpg?w=300&h=300&s=1",
+        "description": "감천문화마을은 1950년대 6.25 피난민의 힘겨운 삶의 터전으로 시작되어 현재에 이르기까지 민족현대사의 한 단면과 흔적인 부산의 역사를 그대로 간직하고 있는 곳입니다. 산자락을 따라 질서정연하게 늘어선 계단식 집단 주거형태와 모든 길이 통하는 미로미로(美路迷路) 골목길의 경관은 감천만의 독특함을 보여줍니다."
       },
       {
         "uid": 2,
-        "title": "2023 대구 치맥페스티벌",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnVX33jj3mFXL4tc13UELdpqWTFA-szOOIl_sQngAjHJ-INnnHgCu5N-jcFFK_4fihM0M&usqp=CAU",
-        "description": "대구 치맥페스티벌은 치킨과 맥주를 즐기는 축제로, 다양한 맛있는 음식과 음악 공연을 즐길 수 있습니다."
+        "title": "자갈치 시장",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/df/0e/46/fb-img-1467847185133.jpg?w=300&h=300&s=1",
+        "description": "해물을 많이 살수있는곳 주차시설이 많아서 차를 가지고가도 되는곳 해산물과 먹거리가 많아요 자갈치 회센타와 신동아 회센타에서 저렴하게 해산물을 바로 잡아서 먹을수가있"
       },
       {
         "uid": 3,
-        "title": "남해 두모마을",
-        "img": "https://image.ajunews.com/content/image/2019/04/18/20190418112736701546.jpg",
+        "title": "송도 스카이워크",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/3e/30/3e/songdo-skywalk.jpg?w=300&h=300&s=1",
         "description": "남해 두모마을은 아름다운 바다 풍경과 전통적인 한옥 마을로 유명합니다. 자연의 아름다움을 느껴보세요."
       },
       {
         "uid": 4,
-        "title": "경주 첨성대",
-        "img": "https://www.gyeongju.go.kr/upload/content/thumb/20200317/7166B350C2F24E42B79CCCE51AE0166B.jpg",
-        "description": "경주 첨성대는 고려시대의 역사적인 유적지로, 아름다운 건축과 역사를 탐험할 수 있습니다."
+        "title": "광안대교",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/a2/00/73/the-bridge.jpg?w=300&h=300&s=1",
+        "description": "송도 해수욕장과 송도 해상케이블카와 더불어 송도의 대표 관광지 밑이 보이긴 하는데 유리보다 짜릿한 건 그냥 하수구처럼 되어 있는 구간. 스마트폰 떨어뜨릴까 겁납니다"
       }
     ],
     [
       {
         "uid": 1,
-        "title": "하하 해수욕장",
-        "img": "https://ak-d.tripcdn.com/images/10031f000001gry63A3B0.jpg?proc=source%2Ftrip",
-        "description": "중문 해수욕장은 제주도의 아름다운 해변 중 하나로 유명합니다. 이곳에서 휴식을 취하고 파도 소리를 즐기세요."
+        "title": "대구 두류 공원",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/e0/da/e2/daegu-duryu-park.jpg?w=300&h=300&s=1",
+        "description": " 대구 달서구 벚꽃명소 단연 두류공원 거리가 최고가 아닐까 싶습니다. 얘기는 많이들었는데, 이렇게 절정일때 직접가보니 진짜 눈부신 모습에 깜놀했습니다"
       },
       {
         "uid": 2,
-        "title": "2023 서울 치맥페스티벌",
-        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnVX33jj3mFXL4tc13UELdpqWTFA-szOOIl_sQngAjHJ-INnnHgCu5N-jcFFK_4fihM0M&usqp=CAU",
-        "description": "대구 치맥페스티벌은 치킨과 맥주를 즐기는 축제로, 다양한 맛있는 음식과 음악 공연을 즐길 수 있습니다."
+        "title": "김광석 길",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/f0/99/0a/kim-gwangseok-memorial.jpg?w=500&h=400&s=1",
+        "description": "김광석을 잘 모르는 사람도 리메이크된 노래를 통해서 무조건 한번 쯤은 들어봤을테니 전 연령대에 추천할 수 있는 곳. 벽화도 있고 체험할 만한 것도 있고 버스킹도 하는 대구의 넘버원 관광지"
       },
       {
         "uid": 3,
-        "title": "두부 두모마을",
-        "img": "https://image.ajunews.com/content/image/2019/04/18/20190418112736701546.jpg",
-        "description": "남해 두모마을은 아름다운 바다 풍경과 전통적인 한옥 마을로 유명합니다. 자연의 아름다움을 느껴보세요."
+        "title": "83타워",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/d3/4b/91/eworld-83.jpg?w=500&h=-1&s=1",
+        "description": "이월드83타워 뮤지엄에서 펼쳐지는 동심의 세계! 짱구야캠핑가자 대구투어전시 포토존이 완전 가득한 공간이라서 연인들 데이트 장소로 좋아요"
       },
       {
         "uid": 4,
-        "title": "경기도 첨성대",
-        "img": "https://www.gyeongju.go.kr/upload/content/thumb/20200317/7166B350C2F24E42B79CCCE51AE0166B.jpg",
-        "description": "경주 첨성대는 고려시대의 역사적인 유적지로, 아름다운 건축과 역사를 탐험할 수 있습니다."
+        "title": "앞산 전망대",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/a6/d3/b8/caption.jpg?w=500&h=400&s=1",
+        "description": "대구 시내를 조망할 수 있는 으뜸 명소 ‣ 앞산케이블카를 타고 오르내리는 쉽고 편안한 여정 ‣ S자로 굽어지며 흐르는 낙동강을 시작으로 오른쪽으로 도시를 감싸는 산자락이 겹겹이 펼쳐진다."
+      }
+    ],
+    [
+      {
+        "uid": 1,
+        "title": "대전 오-월드",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/f3/99/02/daejeon-o-world.jpg?w=400&h=-1&s=1",
+        "description": "평일에 가서 그런지 사람이 없어서 바로바로 타서 좋았어요. 후룸라이드랑 와일드스톰은 오후되니까 줄서서 타긴했지만 재밌었어요."
+      },
+      {
+        "uid": 2,
+        "title": "계족산 황톳길",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/fd/8d/1b/caption.jpg?w=500&h=-1&s=1",
+        "description": "지역 기업인이 계족산에 조성해 놓은 황톳길로 길이가 무려 14.5km에 달합니다. 맨발로 황톳길을 걸으며 동시에 산림욕도 할 수 있어 에코힐링여행지로 손색이 없습니다. 대전은 크고 화려한 관광지는 아니지만 이처럼 좋은 명소가 수 없이 많은 도시이기도 합니다."
+      },
+      {
+        "uid": 3,
+        "title": "화폐박물관",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/d8/9d/e9/currency-museum.jpg?w=500&h=400&s=1",
+        "description": "대전에 많지않은 뮤지엄중 하나. 초등학교때 엄마손잡고 견학갔던 기억이 새록새록했다. 봄에는 많은 유치원과 학교에서 소풍 및 견학을 온다."
+      },
+      {
+        "uid": 4,
+        "title": "엑스포다리",
+        "img": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/f5/f7/40/caption.jpg?w=500&h=400&s=1",
+        "description": "1993년의 세계박람회를 맞아 회장 남쪽의 갑천에 개설한 보행자용 다리로, 엠블럼과 같은 빨간색과 파란색의 아치를 설치한 곳이다. 북쪽으로는 과거 회장으로 이후 과학공원이 된 한빛탑, 남쪽으로는 한밭수목원의 광장을 잇는 이 다리는 현재 이미 과학공원마저 예전의 모습이 아닌 상황이지만 지역의 특별한 모습을 만드는 곳으로 과거 엑스포를 관람한 바 있는 사람들에게는 추억의 자리가 될 것이다."
       }
     ]
   ]
