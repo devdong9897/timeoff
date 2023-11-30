@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-
 export const ThemeContainer = styled.div`
   h1 {
     color: #006dab;
@@ -31,25 +30,24 @@ export const ThemeContainer = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    }
-    .sea {
+  }
+  .sea {
     background-image: url("https://i.pinimg.com/originals/02/74/b4/0274b40fd63a761de0b05db9ee2f34c4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    }
-    .life-shot {
+  }
+  .life-shot {
     background-image: url("https://c.wallhere.com/photos/95/67/camera_Wood_Table-1996771.jpg!d");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    }
-    .festival {
+  }
+  .festival {
     background-image: url("https://mblogthumb-phinf.pstatic.net/MjAxNzA2MDhfMjUw/MDAxNDk2ODg4ODg0NzAy.dQl8d_MqgDXPnkbYkvZDHqFwuf9ZtTHNU9NJh4s1ybEg.AS2_lZo4gwwXcZSeQriv2G8HhZoKcDhbyvkYwcNqbYYg.JPEG.tech0195/%EC%95%84%EC%9D%B4%ED%8F%B0%EB%B0%B0%EA%B2%BD%ED%99%94%EB%A9%B43.jpg?type=w800");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    }
   }
 `;
 

@@ -134,7 +134,7 @@ const KakaoMap = (props: propsType) => {
 
       el.innerHTML = itemStr;
       el.className = "item";
-
+      
       return el;
     };
 

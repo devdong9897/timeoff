@@ -19,6 +19,7 @@ export const Card = styled.div`
   text-align: center;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
   img {
     width: 150px;
@@ -34,14 +35,6 @@ export const Card = styled.div`
     flex-grow: 1;
   }
 
-  > div h2 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 10px 0;
-    font-size: 18px;
-  }
-
   > div p {
     font-size: 16px;
     color: #555;
@@ -52,6 +45,11 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  .explanation {
+    font-size: 20px;
+    font-weight: bold;
+    color: #006dab;
+  }
 `;
 export const CardContent = styled.div`
   flex: 1;

@@ -22,10 +22,9 @@ const ThemeList: React.FC<ThemeListProps> = ({ mapNumber }) => {
         <h1>2023년 테마 추천여행지</h1>
       )}
       <CardContainer>
-        {/* selectedData가 배열이고 요소가 하나 이상 있으면 데이터 출력  */}
         {Array.isArray(selectedData) && selectedData.length > 0 ? (
           selectedData.map(item => (
-            <Card key={item.uid}>
+            <Card key={item.uid} onClick={() => window.open(item.link, "_blank")}>
               <img src={item.img} alt={item.title} />
               <CardContent>
                 <CardTitle>{item.title}</CardTitle>
@@ -34,7 +33,7 @@ const ThemeList: React.FC<ThemeListProps> = ({ mapNumber }) => {
             </Card>
           ))
         ) : (
-          <p>
+          <p className="explanation">
             추천여행 정보가 없습니다. <br />
             다른 지역을 선택해주세요.
           </p>
