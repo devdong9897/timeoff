@@ -6,12 +6,16 @@ interface ThemeMapContainerProps {
 }
 
 export const ThemeMapContainer = styled.div<ThemeMapContainerProps>`
+  h1 {
+    color: #006dab;
+    margin-top: 50px;
+  }
   .map-box {
     width: 600px;
     height: 830px;
     margin-bottom: 50px;
     background: #c3ebff;
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;

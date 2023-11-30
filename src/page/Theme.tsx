@@ -7,7 +7,6 @@ import mapData from "../api/mapData.json";
 
 const Theme = () => {
   const [mapNumber, setMapNumber] = useState<number>(0);
-  // const [location, setLocation] = useState(mapData.recotrip);
 
   console.log(mapData.recotrip);
   return (
