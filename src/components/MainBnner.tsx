@@ -14,45 +14,45 @@ interface MainSlide {
   link: string;
 }
 
-const MainBnner: React.FC = () => {
-  const mainData: MainSlide[] = [
-    {
-      pk: 1,
-      title: "1번 슬라이드 테스트",
-      img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "rgb(239, 73, 73)",
-      link: "/tlog",
-    },
-    {
-      pk: 2,
-      title: "2번 슬라이드 테스트",
-      img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#ff6a2f",
-      link: "/tlog",
-    },
-    {
-      pk: 3,
-      title: "3번 슬라이드 테스트",
-      img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#d2d53c",
-      link: "/tlog",
-    },
-    {
-      pk: 4,
-      title: "걸어서 말고 차타고 테마 여행",
-      img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#48d02a",
-      link: "/tlog",
-    },
-    {
-      pk: 5,
-      title: "5번 슬라이드 테스트 이건??????????????????",
-      img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
-      backgroundColor: "#2841b1",
-      link: "/tlog",
-    },
-  ];
+const mainData: MainSlide[] = [
+  {
+    pk: 1,
+    title: "1번 슬라이드 테스트",
+    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    backgroundColor: "rgb(239, 73, 73)",
+    link: "/tlog",
+  },
+  {
+    pk: 2,
+    title: "2번 슬라이드 테스트",
+    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    backgroundColor: "#ff6a2f",
+    link: "/tlog",
+  },
+  {
+    pk: 3,
+    title: "3번 슬라이드 테스트",
+    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    backgroundColor: "#d2d53c",
+    link: "/tlog",
+  },
+  {
+    pk: 4,
+    title: "걸어서 말고 차타고 테마 여행",
+    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    backgroundColor: "#48d02a",
+    link: "/tlog",
+  },
+  {
+    pk: 5,
+    title: "5번 슬라이드 테스트 이건??????????????????",
+    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    backgroundColor: "#2841b1",
+    link: "/tlog",
+  },
+];
 
+const MainBnner: React.FC = () => {
   const totalSlide = mainData.length;
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<any>(null);
@@ -74,7 +74,7 @@ const MainBnner: React.FC = () => {
 
   return (
     <Bnner>
-      <div className="main-slide" >
+      <div className="main-slide">
         {mainData?.map((data, index) => (
           <div
             className="main-top"
