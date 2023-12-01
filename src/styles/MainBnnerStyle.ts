@@ -3,13 +3,11 @@ import styled from "@emotion/styled";
 export const Bnner = styled.div`
   margin-bottom: 150px;
   .main-top {
-    display: flex;
     height: 400px;
     ul {
       position: relative;
       width: 100%;
       height: 500px;
-      float: right;
       .top-img {
         position: absolute;
         top: 15%;
@@ -17,26 +15,30 @@ export const Bnner = styled.div`
         width: 500px;
         height: 400px;
       }
+
       .top-info {
         position: absolute;
         top: 35%;
         right: 20%;
-        background: hotpink;
+        background:#fff;
         width: 23rem;
         height: 8rem;
       }
+
       .top-detail {
         position: absolute;
         bottom: 34.4%;
         right: 41.45%;
-        background: yellow;
+        background:#fff;
         width: 5rem;
         height: 25px;
       }
     }
   }
+
   .main-section {
     position: relative;
+
     .progress-bar {
       position: absolute;
       width: 500px;
@@ -45,6 +47,7 @@ export const Bnner = styled.div`
       margin-top: 20px;
       background: red;
     }
+
     button {
       display: block;
     }

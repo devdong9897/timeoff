@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+
+import React, { useState } from "react";
 import { Bnner } from "../styles/MainBnnerStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -55,7 +56,7 @@ const mainData: MainSlide[] = [
 const MainBnner: React.FC = () => {
   const totalSlide = mainData.length;
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slideRef = useRef<any>(null);
+
 
   const prevSlide = () => {
     setCurrentSlide(currentSlide === 0 ? totalSlide - 1 : currentSlide - 1);
@@ -65,12 +66,7 @@ const MainBnner: React.FC = () => {
     setCurrentSlide(currentSlide + 1 >= totalSlide ? 0 : currentSlide + 1);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      slideRef.current.style.transition = "all 1.0s ease-in-out";
-      slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
-    }, 0);
-  }, [currentSlide]);
+ 
 
   return (
     <Bnner>
@@ -79,9 +75,8 @@ const MainBnner: React.FC = () => {
           <div
             className="main-top"
             key={index}
-            ref={slideRef}
             style={{
-              display: index === currentSlide ? "block" : "none",
+              display: index === currentSlide ? "flex" : "none",
               backgroundColor: data.backgroundColor,
             }}
           >
@@ -93,7 +88,7 @@ const MainBnner: React.FC = () => {
                 <span>{data.title}</span>
               </li>
               <li className="top-detail">
-                <a href={data.link} target="_blank" rel="noopener noreferrer">
+                <a href={data.link} target="" rel="">
                   자세히 보기
                 </a>
               </li>
@@ -107,11 +102,11 @@ const MainBnner: React.FC = () => {
           {currentSlide + 1} /{mainData.length}
         </div>
         <button onClick={prevSlide}>
-          <FontAwesomeIcon icon={faChevronLeft} /> 이전
+          <FontAwesomeIcon icon={faChevronLeft} /> 
         </button>
         <button onClick={nextSlide}>
           <FontAwesomeIcon icon={faChevronRight} />
-          다음
+      
         </button>
       </div>
     </Bnner>
