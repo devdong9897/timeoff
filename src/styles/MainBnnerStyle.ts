@@ -18,38 +18,56 @@ export const Bnner = styled.div`
 
       .top-info {
         position: absolute;
-        top: 35%;
+        /* top: 35%; */
+        top: 28%;
         right: 20%;
-        background:#fff;
+        /* background:#fff; */
         width: 23rem;
         height: 8rem;
+        font-size: 2rem;
+        font-weight: 600;
       }
 
       .top-detail {
         position: absolute;
-        bottom: 34.4%;
-        right: 41.45%;
-        background:#fff;
-        width: 5rem;
+        /* bottom: 34.4%; */
+        bottom: 45%;
+        right: 40.25%;
+        /* background: #fff; */
+        width: 6rem;
         height: 25px;
+        font-size: 18px;
+        font-weight: 600;
+        > a {
+          color: black;
+        }
       }
-    }
-  }
+      .main-section {
+        position: relative;
+        /* position: absolute; */
 
-  .main-section {
-    position: relative;
+        .progress-bar {
+          display: flex;
+          position: absolute;
+          width: 500px;
+          height: 40px;
+          right: 10.25%;
+          top: 330px;
+          /* background: red; */
+          gap: 50px;
+        }
 
-    .progress-bar {
-      position: absolute;
-      width: 500px;
-      height: 40px;
-      right: 22.17%;
-      margin-top: 20px;
-      background: red;
-    }
-
-    button {
-      display: block;
+        .prev-bt {
+          position: absolute;
+          top: 195px;
+          left: 35px;
+        }
+        .next-bt {
+          position: absolute;
+          top: 195px;
+          right: 35px;
+        }
+      }
     }
   }
 `;
