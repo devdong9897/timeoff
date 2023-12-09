@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   ThemeListContainer,
   CardContainer,
@@ -8,6 +8,8 @@ import {
   CardDescription,
 } from "../../styles/ThemeListStyle";
 import mapData from "../../api/mapData.json";
+import { getThemeList } from '../../api/themeFetch';
+
 
 interface ThemeListProps {
   mapNumber: number;
@@ -15,6 +17,11 @@ interface ThemeListProps {
 
 const ThemeList: React.FC<ThemeListProps> = ({ mapNumber }) => {
   const selectedData = mapData.recotrip[mapNumber];
+
+
+  useEffect(() => {
+    getThemeList()
+  },[])
 
   return (
     <ThemeListContainer>
