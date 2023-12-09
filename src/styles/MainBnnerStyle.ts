@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
 
+export const MainWrap = styled.div`
+  margin: 0 auto;
+  max-width: 70%;
+`;
 export const Bnner = styled.div`
   margin-bottom: 150px;
   .main-top {
     display: flex;
     height: 400px;
+    width: 1920px;
     ul {
       position: relative;
       width: 100%;

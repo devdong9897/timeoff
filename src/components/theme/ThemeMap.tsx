@@ -20,8 +20,8 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
     setMapNumber(index);
     setClickedIndex(index);
     const data = {
-      id: id,
-      hfil: hfil,
+      id,
+      hfil,
     };
     setObject(data);
   };
@@ -29,8 +29,8 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
   const handleHover = (id: string, hfil: string) => {
     if (clickedIndex === null) {
       const data = {
-        id: id,
-        hfil: hfil,
+        id,
+        hfil,
       };
       setObject(data);
     }
