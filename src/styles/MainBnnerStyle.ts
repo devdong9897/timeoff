@@ -42,9 +42,6 @@ export const Bnner = styled.div`
         height: 25px;
         font-size: 18px;
         font-weight: 600;
-        > a {
-          color: black;
-        }
       }
       .main-section {
         position: relative;
