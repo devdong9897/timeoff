@@ -6,66 +6,120 @@ interface ThemeMapProps {
   setMapNumber: React.Dispatch<React.SetStateAction<number>>;
 }
 
-interface styleType {
+interface MapItem {
   id: string;
+  name: string;
+  d: string;
+  x: string;
+  y: string;
+  fill: string;
   hfil: string;
+  fontSize: string;
+  fontWeight: string;
+  cursor: string;
+  title: string;
 }
 
 const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
-  const mapDatas = mapData.location;
-  const [eobject, setObject] = useState<styleType | null>({ id: "", hfil: "" });
+  const mapDatas: MapItem[] = mapData.location;
+  const [eobject, setObject] = useState<MapItem | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
-  const handleClick = (index: number, id: string, hfil: string) => {
+  const handleClick = (index: number, item: MapItem) => {
     setMapNumber(index);
+<<<<<<< HEAD
     setClickedIndex(index);
     const data = {
       id,
       hfil,
     };
     setObject(data);
+=======
+    setClickedIndex(prev => (prev === index ? null : index));
+    setHoveredIndex(null);
+
+    setObject({
+      ...item,
+      fill: item.hfil, 
+    });
+>>>>>>> 9675d3cced26840e9fbb6818582af9ad79b1c0b7
   };
 
-  const handleHover = (id: string, hfil: string) => {
+  const handleHover = (index: number, item: MapItem) => {
+    if (clickedIndex !== null) {
+      if (index !== clickedIndex) {
+        setObject(item);
+      }
+    } else {
+      setHoveredIndex(index);
+      setObject(item);
+    }
+  };
+
+  const handleMouseLeave = () => {
     if (clickedIndex === null) {
+<<<<<<< HEAD
       const data = {
         id,
         hfil,
       };
       setObject(data);
+=======
+      setObject(null);
+      setHoveredIndex(null);
+>>>>>>> 9675d3cced26840e9fbb6818582af9ad79b1c0b7
     }
   };
 
   return (
-    <ThemeMapContainer id={eobject?.id} uu={eobject?.hfil}>
+    <ThemeMapContainer
+      id={eobject?.id}
+      uu={eobject?.hfil}
+      onMouseLeave={handleMouseLeave}
+    >
       <h1>지역을 클릭하여 지역축제를 확인해보세요</h1>
-      {/* 클릭시 삼항연산자, 값과 타입이 정확히 일치하는지 확인하고, 변경 사항이 있는 경우에만 리렌더링 하기 때문에 !== 사용 */}
-      {/* 클릭된 지역이 있을 경우에 clicked클래스추가 아닐 경우 빈문자열 호롤롤로 */}
       <div className={`map-box ${clickedIndex !== null ? "clicked" : ""}`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 524 631"
-          aria-label="Map of South Korea"
+          aria-label="대한민국 지도"
           fill="#969696"
         >
           {mapDatas?.map((item, index) => (
             <g
               key={index}
               onClick={() => {
-                handleClick(index, item.id, item.hfil);
+                handleClick(index, item);
               }}
               onMouseEnter={() => {
-                handleHover(item.id, item.hfil);
+                handleHover(index, item);
+              }}
+              onMouseLeave={() => {
+                setObject(null);
+                setHoveredIndex(null);
               }}
             >
-              <path id={item.id} name={item.name} d={item.d} />
+              <path
+                id={item.id}
+                name={item.name}
+                d={item.d}
+                fill={
+                  clickedIndex === index
+                    ? item.hfil
+                    : hoveredIndex === index
+                    ? item.hfil
+                    : "#333"
+                }
+              />
               <text
                 x={item.x}
                 y={item.y}
-                fill={item.fill}
+                fill="#fff" 
                 fontSize={item.fontSize}
                 fontWeight={item.fontWeight}
                 cursor={item.cursor}
+                className={clickedIndex === index ? "clicked-text" : ""}
               >
                 {item.title}
               </text>

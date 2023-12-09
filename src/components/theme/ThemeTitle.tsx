@@ -21,6 +21,9 @@ const ThemeTitle = () => {
         <div className="theme-box festival">
           <p>축제</p>
         </div>
+        <div className="theme-box festival">
+          <p>축제</p>
+        </div>
       </div>
     </ThemeContainer>
   );
