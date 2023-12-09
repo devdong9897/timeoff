@@ -10,8 +10,8 @@ export const ThemeContainer = styled.div`
     margin-top: 20px;
   }
   .theme-box {
-    width: 350px;
-    height: 500px;
+    width: 230px;
+    height: 300px;
     font-weight: 700;
     background-color: #006dab;
     display: flex;
