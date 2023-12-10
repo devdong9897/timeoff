@@ -8,8 +8,7 @@ import {
   CardDescription,
 } from "../../styles/ThemeListStyle";
 import mapData from "../../api/mapData.json";
-import { getThemeList } from '../../api/themeFetch';
-
+import { getThemeList, ThemeItem } from "../../api/themeFetch"; // Import ThemeItem interface
 
 interface ThemeListProps {
   mapNumber: number;
@@ -18,10 +17,19 @@ interface ThemeListProps {
 const ThemeList: React.FC<ThemeListProps> = ({ mapNumber }) => {
   const selectedData = mapData.recotrip[mapNumber];
 
-
   useEffect(() => {
-    getThemeList()
-  },[])
+    const fetchData = async () => {
+      try {
+        const result: ThemeItem[] = await getThemeList();
+        console.log(result);
+        // Handle the data as needed
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <ThemeListContainer>
@@ -31,7 +39,10 @@ const ThemeList: React.FC<ThemeListProps> = ({ mapNumber }) => {
       <CardContainer>
         {Array.isArray(selectedData) && selectedData.length > 0 ? (
           selectedData.map(item => (
-            <Card key={item.uid} onClick={() => window.open(item.link, "_blank")}>
+            <Card
+              key={item.uid}
+              onClick={() => window.open(item.link, "_blank")}
+            >
               <img src={item.img} alt={item.title} />
               <CardContent>
                 <CardTitle>{item.title}</CardTitle>

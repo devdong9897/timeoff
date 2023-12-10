@@ -28,22 +28,13 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
 
   const handleClick = (index: number, item: MapItem) => {
     setMapNumber(index);
-<<<<<<< HEAD
-    setClickedIndex(index);
-    const data = {
-      id,
-      hfil,
-    };
-    setObject(data);
-=======
     setClickedIndex(prev => (prev === index ? null : index));
-    setHoveredIndex(null);
+    // setHoveredIndex(null); // Comment this line to keep hoveredIndex after clicking
 
     setObject({
       ...item,
-      fill: item.hfil, 
+      fill: item.hfil,
     });
->>>>>>> 9675d3cced26840e9fbb6818582af9ad79b1c0b7
   };
 
   const handleHover = (index: number, item: MapItem) => {
@@ -59,16 +50,8 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
 
   const handleMouseLeave = () => {
     if (clickedIndex === null) {
-<<<<<<< HEAD
-      const data = {
-        id,
-        hfil,
-      };
-      setObject(data);
-=======
-      setObject(null);
-      setHoveredIndex(null);
->>>>>>> 9675d3cced26840e9fbb6818582af9ad79b1c0b7
+      // setObject(null); // Comment this line to keep hovered effect after clicking
+      // setHoveredIndex(null); // Comment this line to keep hoveredIndex after clicking
     }
   };
 
@@ -97,7 +80,7 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
               }}
               onMouseLeave={() => {
                 setObject(null);
-                setHoveredIndex(null);
+                // setHoveredIndex(null); // Comment this line to keep hoveredIndex after clicking
               }}
             >
               <path
@@ -109,13 +92,13 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
                     ? item.hfil
                     : hoveredIndex === index
                     ? item.hfil
-                    : "#333"
+                    : item.fill
                 }
               />
               <text
                 x={item.x}
                 y={item.y}
-                fill="#fff" 
+                fill="#fff" // Set the text color to white
                 fontSize={item.fontSize}
                 fontWeight={item.fontWeight}
                 cursor={item.cursor}
