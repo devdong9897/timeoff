@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Rec } from "../styles/RecItemStyle";
+import { Rec } from "../../styles/RecItemStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleChevronLeft,

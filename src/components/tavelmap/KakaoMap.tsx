@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { KakaoMapWrap } from "../styles/KakaoStyle";
-import type { propsType } from "../page/TravelMap";
-import { useMyLocation } from "../hooks/useMyLocation";
+import { KakaoMapWrap } from "../../styles/KakaoStyle";
+import type { propsType } from "../../page/TravelMap";
+import { useMyLocation } from "../../hooks/useMyLocation";
 
 interface Place {
   place_name: string;

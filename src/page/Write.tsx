@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import WriteEditor from "../components/WriteEditor";
+import WriteEditor from "../components/Write/WriteEditor";
 import { WriteWrap } from "../styles/WriteStyle";
 import HashTag from "../components/Write/HashTag";
 import { useNavigate } from "react-router";

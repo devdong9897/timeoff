@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TravelMapWrap } from "../styles/TravelMapStyle";
-import KakaoMap from "../components/KakaoMap";
+import KakaoMap from "../components/tavelmap/KakaoMap";
 
 export interface propsType {
   searchKeyword: string;

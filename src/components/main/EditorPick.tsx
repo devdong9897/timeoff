@@ -1,5 +1,5 @@
 import React from "react";
-import { EditorWrap } from "../styles/EditorPickStyle";
+import { EditorWrap } from "../../styles/EditorPickStyle";
 import { Link } from "react-router-dom";
 
 interface Editor {
@@ -39,8 +39,8 @@ const EditorPick = () => {
   return (
     <EditorWrap>
       {editorData?.map(data => (
-        <div key={data.pk} >
-          <ul >
+        <div key={data.pk}>
+          <ul>
             <li>
               <img className="editor-img" src={data.img} alt={data.title} />
             </li>

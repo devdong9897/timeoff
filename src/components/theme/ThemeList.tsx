@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardDescription,
 } from "../../styles/ThemeListStyle";
-// import type { ThemeItem } from "../../api/themeFetch"; 
+// import type { ThemeItem } from "../../api/themeFetch";
 import mapData from "../../api/mapData.json";
 
 interface ThemeListProps {
@@ -20,13 +20,12 @@ const ThemeList: React.FC<ThemeListProps> = ({ mapNumber }) => {
   useEffect(() => {
     // const fetchData = async () => {
     //   try {
-    //     const result: ThemeItem[] = await getThemeList(); 
+    //     const result: ThemeItem[] = await getThemeList();
     //     console.log(result);
     //   } catch (error) {
     //     console.error(error);
     //   }
     // };
-
     // fetchData();
   }, []);
 

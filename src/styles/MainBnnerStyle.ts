@@ -1,9 +1,6 @@
 import styled from "@emotion/styled";
 
-export const MainWarp = styled.div`
-
-
-`
+export const MainWarp = styled.div``;
 export const Bnner = styled.div`
   margin-bottom: 150px;
   .main-top {

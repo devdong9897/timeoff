@@ -8,4 +8,3 @@ export const LayoutWrap = styled.div`
     max-width: 70%;
   }
 `;
-

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Bnner } from "../styles/MainBnnerStyle";
+import { Bnner } from "../../styles/MainBnnerStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
