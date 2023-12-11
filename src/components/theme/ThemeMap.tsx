@@ -29,7 +29,6 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
   const handleClick = (index: number, item: MapItem) => {
     setMapNumber(index);
     setClickedIndex(prev => (prev === index ? null : index));
-    // setHoveredIndex(null); // Comment this line to keep hoveredIndex after clicking
 
     setObject({
       ...item,
@@ -50,8 +49,8 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
 
   const handleMouseLeave = () => {
     if (clickedIndex === null) {
-      // setObject(null); // Comment this line to keep hovered effect after clicking
-      // setHoveredIndex(null); // Comment this line to keep hoveredIndex after clicking
+      // setObject(null);
+      // setHoveredIndex(null);
     }
   };
 
@@ -80,7 +79,7 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
               }}
               onMouseLeave={() => {
                 setObject(null);
-                // setHoveredIndex(null); // Comment this line to keep hoveredIndex after clicking
+                // setHoveredIndex(null);
               }}
             >
               <path
@@ -98,7 +97,7 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
               <text
                 x={item.x}
                 y={item.y}
-                fill="#fff" // Set the text color to white
+                fill="#fff"
                 fontSize={item.fontSize}
                 fontWeight={item.fontWeight}
                 cursor={item.cursor}
