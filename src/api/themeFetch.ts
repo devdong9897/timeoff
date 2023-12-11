@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface ThemeItem {
+export interface ThemeItem {
   title: string;
   startDate: string;
   endDate: string;
@@ -11,17 +11,18 @@ interface ThemeItem {
   firstImage: string;
 }
 
-export const getThemeList = async (): Promise<ThemeItem[]> => {
+const getThemeList = async (): Promise<ThemeItem[]> => {
   try {
     const res = await axios.get(
       `https://port-0-time-off-57lz2alptiphb4.sel4.cloudtype.app/event/1`,
     );
     console.log(res);
-    const result = res.data;
+    const result: ThemeItem[] = res.data;
     console.log(result);
     return result;
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
-    throw error;
+    throw new Error("Failed to fetch theme list");
   }
 };
+export default { getThemeList };

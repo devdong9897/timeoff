@@ -10,10 +10,10 @@ const ThemeTitle = () => {
       </div>
       <div className="theme-box-container">
         <div className="theme-box healing">
-          <p>힐링</p>
+          <p>명소</p>
         </div>
         <div className="theme-box sea">
-          <p>바다</p>
+          <p>먹방</p>
         </div>
         <div className="theme-box life-shot">
           <p>인생</p>
