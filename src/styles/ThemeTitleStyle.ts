@@ -6,7 +6,8 @@ export const ThemeContainer = styled.div`
   }
   .theme-box-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 13px;
     margin-top: 20px;
   }
   .theme-box {
