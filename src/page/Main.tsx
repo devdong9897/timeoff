@@ -5,7 +5,7 @@ import RecItem from "../components/RecItem";
 
 const Main = () => {
   return (
-    <>
+    <div>
       <MainBnner />
       <div>
         <h2>추천 테마</h2>
@@ -17,7 +17,7 @@ const Main = () => {
         <h2>에디터 픽</h2>
         <EditorPick />
       </div>
-    </>
+    </div>
   );
 };
 
