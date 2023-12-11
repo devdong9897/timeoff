@@ -1,7 +1,7 @@
 import React from "react";
 import MainBnner from "../components/main/MainBnner";
-import EditorPick from "../components/main/EditorPick";
 import RecItem from "../components/main/RecItem";
+import EditorPick from "../components/main/EditorPick";
 
 const Main = () => {
   return (
