@@ -8,6 +8,7 @@ export const Bnner = styled.div`
   margin-bottom: 150px;
   .main-top {
     height: 400px;
+    width: 1920px;
     ul {
       position: relative;
       width: 100%;

@@ -192,6 +192,7 @@ const KakaoMap = (props: propsType) => {
             paginationEl.removeChild(paginationEl.lastChild);
           }
         }
+
         const fragment = document.createDocumentFragment();
 
         for (i = 1; i <= pagination.last; i++) {

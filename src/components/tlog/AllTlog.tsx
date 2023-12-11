@@ -1,11 +1,11 @@
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   RegionButtons,
   ThemeButtons,
   AllTlogPostContents,
   AllTlogWrap,
 } from "../../styles/AllTlogStyle";
-// import { setFalse } from "../../reducers/tlogSlice";
+import { setFalse } from "../../reducers/tlogSlice";
 
 // interface AllTlogProps {
 //   setChange: React.Dispatch<React.SetStateAction<boolean>>;
@@ -275,13 +275,13 @@ const themeData: ThemeData[] = [
 //   props: AllTlogProps,
 // ) => {
 const AllTlog = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const handleImgClick = () => {
-  //   console.log("이동되니");
-  //   // props.setChange(false);
-  //   dispatch(setFalse());
-  // };
+  const handleImgClick = () => {
+    console.log("이동되니");
+    // props.setChange(false);
+    dispatch(setFalse());
+  };
 
   const handleregion = () => {
     console.log("안녕");
@@ -301,7 +301,7 @@ const AllTlog = () => {
   return (
     <AllTlogWrap>
       <div className="all-tlog-title">
-        <h2>Travel Log</h2>
+        <h2 onClick={handleImgClick}>Travel Log</h2>
       </div>
       <RegionButtons>
         {regData.map((item, index) => (
