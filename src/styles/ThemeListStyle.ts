@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const ThemeListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  margin-left: 15px;
   h1 {
     color: #006dab;
     margin-bottom: 20px;
@@ -13,7 +13,7 @@ export const ThemeListContainer = styled.div`
 export const Card = styled.div`
   display: flex;
   flex-direction: row;
-  width: 400px;
+  width: 380px;
   padding: 10px;
   border-radius: 8px;
   text-align: center;

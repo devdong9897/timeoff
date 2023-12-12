@@ -49,8 +49,8 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
 
   const handleMouseLeave = () => {
     if (clickedIndex === null) {
-      // setObject(null);
-      // setHoveredIndex(null);
+      setObject(null);
+      setHoveredIndex(null);
     }
   };
 
@@ -79,7 +79,7 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
               }}
               onMouseLeave={() => {
                 setObject(null);
-                // setHoveredIndex(null);
+                setHoveredIndex(null);
               }}
             >
               <path
