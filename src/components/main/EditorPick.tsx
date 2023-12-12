@@ -12,25 +12,25 @@ const editorData: Editor[] = [
   {
     pk: 1,
     title: "연말을 더 설레게 하는 감성 여행지 특집🎄",
-    img: "https://cdn.pixabay.com/photo/2017/01/06/23/09/tree-1959267_640.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1GrQTpBvqTgWhq6xdDtmtbu4ncgPg13y0aA&usqp=CAU",
     link: "/tlog",
   },
   {
     pk: 2,
     title: "마음의 온도를 높이는 겨울 여행지 추천🎅",
-    img: "https://cdn.pixabay.com/photo/2012/10/25/23/18/train-62849_640.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWCV1zV6_Qxrng8K_lSGVjNyjRfVr44R3CWw&usqp=CAU",
     link: "/tlog",
   },
   {
     pk: 3,
     title: "미리보는 완벽한 겨울 낭만 여행지",
-    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1GrQTpBvqTgWhq6xdDtmtbu4ncgPg13y0aA&usqp=CAU",
     link: "/tlog",
   },
   {
     pk: 4,
     title: "늦가을 바람 따라 떠나는 정선 드라이브",
-    img: "https://cdn.pixabay.com/photo/2015/11/11/03/47/evening-1038148_640.jpg",
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWCV1zV6_Qxrng8K_lSGVjNyjRfVr44R3CWw&usqp=CAU",
     link: "/tlog",
   },
 ];
