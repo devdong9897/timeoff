@@ -1,28 +1,36 @@
 import styled from "@emotion/styled";
 
 export const MainWarp = styled.div``;
+
+export const MainSpacer = styled.div`
+  height: 30rem;
+`;
 export const Bnner = styled.div`
   margin-bottom: 150px;
   .main-top {
-    height: 400px;
-    width: 1920px;
+    position: absolute;
+    height: 550px;
+    /* width: 1920px; */
+    width: 100%;
+    left: 0;
+    top: 0;
     ul {
       position: relative;
       width: 100%;
       height: 500px;
       .top-img {
         position: absolute;
-        top: 15%;
-        left: 10%;
-        width: 500px;
-        height: 400px;
+        top: 38%;
+        left: 15%;
+        width: 700px;
+        height: 450px;
       }
 
       .top-info {
         position: absolute;
         /* top: 35%; */
         top: 28%;
-        right: 20%;
+        right: 28%;
         /* background:#fff; */
         width: 23rem;
         height: 8rem;

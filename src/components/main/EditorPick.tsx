@@ -38,21 +38,24 @@ const editorData: Editor[] = [
 const EditorPick = () => {
   return (
     <EditorWrap>
-      {editorData?.map(data => (
-        <div key={data.pk}>
-          <ul>
-            <li>
-              <img className="editor-img" src={data.img} alt={data.title} />
-            </li>
-            <li>
-              <span>{data.title}</span>
-            </li>
-            <li>
-              <Link to={data.link}>자세히 보기</Link>
-            </li>
-          </ul>
-        </div>
-      ))}
+      <h2>에디터 픽</h2>
+      <div>
+        {editorData?.map(data => (
+          <div key={data.pk}>
+            <ul >
+              <li>
+                <img className="editor-img" src={data.img} alt={data.title} />
+              </li>
+              <li>
+                <span>{data.title}</span>
+              </li>
+              <li>
+                <Link to={data.link}>자세히 보기</Link>
+              </li>
+            </ul>
+          </div>
+        ))}
+      </div>
     </EditorWrap>
   );
 };
