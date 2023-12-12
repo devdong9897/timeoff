@@ -12,6 +12,7 @@ export const AllTlogWrap = styled.div`
       text-align: center;
       font-size: 3rem;
       margin-bottom: 3rem;
+      cursor: pointer;
     }
     > div {
       border-radius: 50%;

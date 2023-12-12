@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
 import { setTrue } from "../reducers/tlogSlice";
 import { useDispatch } from "react-redux";
@@ -7,11 +7,16 @@ import Search from "./Search";
 
 const Header: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleImgClick = () => {
     console.log("이동되니");
     // props.setChange(false);
     dispatch(setTrue());
+  };
+
+  const handleMyPageClick = () => {
+    navigate("/mypage");
   };
 
   return (
@@ -71,7 +76,7 @@ const Header: React.FC = () => {
           <li>
             <img src="/leng/leng.png" alt="leng" />
           </li>
-          <li>
+          <li onClick={handleMyPageClick}>
             <img src="/login/login.png" alt="Profile" />
           </li>
         </ul>

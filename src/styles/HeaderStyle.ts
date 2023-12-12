@@ -63,6 +63,7 @@ export const HeaderWrap = styled.header`
     gap: 20px;
     width: 100%;
     > li {
+      cursor: pointer;
       img {
         width: 40px;
         height: 40px;
