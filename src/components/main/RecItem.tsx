@@ -62,36 +62,73 @@ const RecItem: React.FC = () => {
 
   return (
     <Rec>
-      <ul className="item-list">
-        {datas
-          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-          .map(data => (
-            <li key={data.pid}>
-              <img src={data.img} alt={data.title} />
-              <div>{data.title}</div>
-            </li>
-          ))}
-      </ul>
+      <div>
+        <h2>추천 테마</h2>
+        <ul className="item-list">
+          {datas
+            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+            .map(data => (
+              <li key={data.pid}>
+                <img src={data.img} alt={data.title} />
+                <div>{data.title}</div>
+              </li>
+            ))}
+        </ul>
 
-      <div
-        className="prev-btn"
-        onClick={toPrev}
-        style={{ display: currentPage === 1 ? "none" : "" }}
-      >
-        <FontAwesomeIcon
-          icon={faCircleChevronLeft}
-          // style={{ color: "#e8eaee" }}
-        />
+        <div
+          className="prev-btn"
+          onClick={toPrev}
+          style={{ display: currentPage === 1 ? "none" : "" }}
+        >
+          <FontAwesomeIcon
+            icon={faCircleChevronLeft}
+            // style={{ color: "#e8eaee" }}
+          />
+        </div>
+        <div
+          className="next-btn"
+          onClick={toNext}
+          style={{ display: currentPage === totalPages ? "none" : "" }}
+        >
+          <FontAwesomeIcon
+            icon={faCircleChevronRight}
+            // style={{ color: "#e8eaee" }}
+          />
+        </div>
       </div>
-      <div
-        className="next-btn"
-        onClick={toNext}
-        style={{ display: currentPage === totalPages ? "none" : "" }}
-      >
-        <FontAwesomeIcon
-          icon={faCircleChevronRight}
-          // style={{ color: "#e8eaee" }}
-        />
+      <div>
+        <h2>추천 여행</h2>
+        <ul className="item-list">
+          {datas
+            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+            .map(data => (
+              <li key={data.pid}>
+                <img src={data.img} alt={data.title} />
+                <div>{data.title}</div>
+              </li>
+            ))}
+        </ul>
+
+        <div
+          className="prev-btn"
+          onClick={toPrev}
+          style={{ display: currentPage === 1 ? "none" : "" }}
+        >
+          <FontAwesomeIcon
+            icon={faCircleChevronLeft}
+            // style={{ color: "#e8eaee" }}
+          />
+        </div>
+        <div
+          className="next-btn"
+          onClick={toNext}
+          style={{ display: currentPage === totalPages ? "none" : "" }}
+        >
+          <FontAwesomeIcon
+            icon={faCircleChevronRight}
+            // style={{ color: "#e8eaee" }}
+          />
+        </div>
       </div>
     </Rec>
   );
