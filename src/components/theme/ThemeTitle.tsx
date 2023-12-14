@@ -14,7 +14,7 @@ const ThemeTitle = () => {
         </div>
         <div className="theme-box food">
           <p>맛집</p>
-        </div>
+        </div> 
         <div className="theme-box camping">
           <p>캠핑</p>
         </div>
