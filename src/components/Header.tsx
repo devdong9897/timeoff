@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
 import { setTrue } from "../reducers/tlogSlice";
 import { useDispatch } from "react-redux";
 import Search from "./Search";
+import { LoginModal } from "./Modal";
+
 
 const Header: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleImgClick = () => {
-    console.log("이동되니");
-    // props.setChange(false);
     dispatch(setTrue());
   };
 
   const handleMyPageClick = () => {
     navigate("/mypage");
   };
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  // const handleModalClose = () => {
+  //   setModalOpen(false);
+  // }
 
   return (
     <>
@@ -78,6 +87,12 @@ const Header: React.FC = () => {
           </li>
           <li onClick={handleMyPageClick}>
             <img src="/login/login.png" alt="Profile" />
+          </li>
+          {modalOpen && (
+            <LoginModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          )}
+          <li onClick={handleModalOpen}>
+            <img src="" alt="" />
           </li>
         </ul>
       </HeaderWrap>
