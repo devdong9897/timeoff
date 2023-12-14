@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ThemeMapContainer } from "../../styles/ThemeMapStyle";
 import mapData from "../../api/mapData.json";
+import { number } from 'purify-ts';
 
 interface ThemeMapProps {
   setMapNumber: React.Dispatch<React.SetStateAction<number>>;
@@ -27,11 +28,10 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
 
   const handleClick = (index: number, item: MapItem) => {
-    setMapNumber(index);
+    setMapNumber(number);
     setClickedIndex(prev => (prev === index ? null : index));
 
     setObject({
-      ...item,
       fill: item.hfil,
     });
   };
@@ -39,7 +39,7 @@ const ThemeMap: React.FC<ThemeMapProps> = ({ setMapNumber }) => {
   const handleHover = (index: number, item: MapItem) => {
     if (clickedIndex !== null) {
       if (index !== clickedIndex) {
-        setObject(item);
+        setObject(index);
       }
     } else {
       setHoveredIndex(index);
