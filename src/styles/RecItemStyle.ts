@@ -1,18 +1,30 @@
 import styled from "@emotion/styled";
 
 export const Rec = styled.div`
+  h2 {
+    font-size: 25px;
+    margin-bottom: 35px;
+  }
   .item-list {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
     img {
       position: relative;
       width: 250px;
       height: 300px;
     }
   }
-  .prev-btn .next-btn {
+  .prev-btn{
     display: block;
     position: absolute;
-    top: 500px;
-    left: 50px;
+    bottom: -85px;
+    right: 280px;
+  }
+  .next-btn {
+    position: absolute;
+    bottom: -85px;
+    right: 280px;
   }
 `;

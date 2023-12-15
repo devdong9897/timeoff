@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Bnner } from "../../styles/MainBnnerStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowRight,
   faChevronLeft,
-  faChevronRight,
   faPause,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
@@ -111,25 +111,27 @@ const MainBnner: React.FC = () => {
             <li className="top-detail">
               <Link to={data.link}>자세히 보기</Link>
             </li>
-            <li className="main-section">
+            <li>
               <div className="progress-bar">
                 <div className="current-slide">
                   {currentSlide + 1} / {totalSlide}
                 </div>
-                <button onClick={togglePlay}>
-                  {isPlaying ? (
-                    <FontAwesomeIcon icon={faPause} />
-                  ) : (
-                    <FontAwesomeIcon icon={faPlay} />
-                  )}
-                </button>
+                <div className="progress-bt">
+                  <button className="prev-bt" onClick={prevSlide}>
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                  </button>
+                  <button onClick={togglePlay} className="stop-bt">
+                    {isPlaying ? (
+                      <FontAwesomeIcon icon={faPause} />
+                    ) : (
+                      <FontAwesomeIcon icon={faPlay} />
+                    )}
+                  </button>
+                  <button className="next-bt" onClick={nextSlide}>
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </button>
+                </div>
               </div>
-              <button className="prev-bt" onClick={prevSlide}>
-                <FontAwesomeIcon icon={faChevronLeft} />
-              </button>
-              <button className="next-bt" onClick={nextSlide}>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </button>
             </li>
           </ul>
         </div>

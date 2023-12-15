@@ -80,20 +80,14 @@ const RecItem: React.FC = () => {
           onClick={toPrev}
           style={{ display: currentPage === 1 ? "none" : "" }}
         >
-          <FontAwesomeIcon
-            icon={faCircleChevronLeft}
-            // style={{ color: "#e8eaee" }}
-          />
+          <FontAwesomeIcon icon={faCircleChevronLeft} />
         </div>
         <div
           className="next-btn"
           onClick={toNext}
           style={{ display: currentPage === totalPages ? "none" : "" }}
         >
-          <FontAwesomeIcon
-            icon={faCircleChevronRight}
-            // style={{ color: "#e8eaee" }}
-          />
+          <FontAwesomeIcon icon={faCircleChevronRight} />
         </div>
       </div>
       <div>
@@ -114,20 +108,15 @@ const RecItem: React.FC = () => {
           onClick={toPrev}
           style={{ display: currentPage === 1 ? "none" : "" }}
         >
-          <FontAwesomeIcon
-            icon={faCircleChevronLeft}
-            // style={{ color: "#e8eaee" }}
-          />
+          <FontAwesomeIcon icon={faCircleChevronLeft} />
         </div>
+
         <div
           className="next-btn"
           onClick={toNext}
           style={{ display: currentPage === totalPages ? "none" : "" }}
         >
-          <FontAwesomeIcon
-            icon={faCircleChevronRight}
-            // style={{ color: "#e8eaee" }}
-          />
+          <FontAwesomeIcon icon={faCircleChevronRight} />
         </div>
       </div>
     </Rec>
