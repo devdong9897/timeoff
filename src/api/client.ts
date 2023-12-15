@@ -3,7 +3,7 @@ import axios from "axios";
 
 // axios 인스턴스 생성
 export const client = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "http://13.125.252.184:8080/",
   headers: {
     "Content-Type": "application/json",
   },
