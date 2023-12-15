@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BookmarkMdStyle } from "../../styles/MypageStyle";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import FavoriteBookmark from "./FavoriteBookmark";
+import FavoriteCourse from "./FavoriteCourse";
 
-function BookmarkModal({ setModalOpen}: any) {
+function BookmarkModal({ setModalOpen, whatOpen }: any) {
   // 모달 끄기
   const closeModal = () => {
     setModalOpen(false);
@@ -18,7 +20,12 @@ function BookmarkModal({ setModalOpen}: any) {
           <button className="close" onClick={closeModal}>
             <FontAwesomeIcon icon={faXmark} />
           </button>
-          <div className="modal-content">모달창입니다.</div>
+          <div className="modal-content">
+            모달창입니다.
+            <div>
+              {whatOpen === "mark" ? <FavoriteBookmark /> : <FavoriteCourse />}
+            </div>
+          </div>
         </div>
       </div>
     </BookmarkMdStyle>

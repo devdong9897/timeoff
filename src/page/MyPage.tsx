@@ -6,7 +6,7 @@ import { MypageWrap } from "../styles/MypageStyle";
 const MyPage = () => {
   return (
     <MypageWrap>
-      마이페이지
+      <h2>마이페이지</h2>
       <div className="mypage-container">
         <Myprofile />
         <Mymenu />

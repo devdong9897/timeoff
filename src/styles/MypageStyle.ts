@@ -1,16 +1,25 @@
 import styled from "@emotion/styled";
 
+export const MypageColor = {
+  mainblue: "#006dab",
+  mainwhite: "#ffffff",
+};
+
 export const MypageWrap = styled.div`
   width: 1200px;
   margin: 0 auto;
   padding: 40px 10px;
   height: 100%;
+  & h2 {
+    color: ${MypageColor.mainblue};
+    line-height: 2;
+  }
   .mypage-container {
     width: 100%;
     height: 100%;
     padding: 10px;
     border-radius: 5px;
-    background-color: #fffacd;
+    /* background-color: #fffacd; */
     gap: 30px;
     display: flex;
     justify-content: center;
@@ -19,6 +28,8 @@ export const MypageWrap = styled.div`
       margin: 0 auto;
       text-align: center;
     }
+
+    /* 프로필 섹션 */
     .profilesection {
       flex: 1;
       padding: 10px;
@@ -27,25 +38,67 @@ export const MypageWrap = styled.div`
         width: 300px;
         height: 300px;
         border-radius: 10px;
-        background-color: #c3ebff;
+        background-color: ${MypageColor.mainblue};
+        color: ${MypageColor.mainwhite};
         li {
           padding: 20px;
         }
+        .profilepic {
+          img {
+            border-radius: 50%;
+          }
+        }
       }
     }
+
+    /* 마이메뉴 섹션 */
     .mymenusection {
       flex: 1;
       ul {
         margin: 0 auto;
         text-align: left;
         li {
-          padding: 20px;
+          padding: 10px;
+          & h4 {
+            padding-left: 10px;
+            font-size: 1rem;
+          }
+          & div > button {
+            cursor: pointer;
+            border: 0;
+            background: 0;
+            padding-left: 10px;
+          }
         }
       }
     }
   }
 `;
 
+// 즐겨찾기 더보기 메뉴 
+export const BookmarkWrap = styled.div`
+  .mark-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li {
+      padding: 0;
+      text-align: center;
+    }
+  }
+`;
+
+export const CourseWrap = styled.div`
+  .mark-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li {
+      padding: 0;
+      text-align: center;
+    }
+  }
+`;
 export const BookmarkMdStyle = styled.div`
   /* 모달창을 화면 중앙. 최상단에 노출 */
   .wrap {
@@ -63,10 +116,6 @@ export const BookmarkMdStyle = styled.div`
 
       /* 최상단 위치 */
       z-index: 999;
-
-      /* 중앙 배치 */
-      /* top, bottom, left, right 는 브라우저 기준으로 작동한다. */
-      /* translate는 본인의 크기 기준으로 작동한다. */
       position: absolute;
       top: 50%;
       left: 50%;
@@ -74,7 +123,6 @@ export const BookmarkMdStyle = styled.div`
 
       /* 모달창 디자인 */
       background-color: #f4f0ef;
-      /* border: 1px solid black; */
       border-radius: 5px;
     }
 
