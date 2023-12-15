@@ -41,10 +41,10 @@ const subscribeData: SubscribeData[] = [
 
 const Tlog = () => {
   const [scroll, setScroll] = useState<boolean>(false);
-  // const [Change, setChange] = useState<boolean>(true);
   const { isTrue } = useSelector(
     (state: { boolean: TlogSliceState }) => state.boolean,
   );
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -72,8 +72,6 @@ const Tlog = () => {
           </ul>
         </div>
         {isTrue ? <AllTlog /> : <MyTlog />}
-
-        {/* {Change ? <AllTlog setChange={setChange} /> : <MyTlog />} */}
       </div>
     </TlogContainer>
   );

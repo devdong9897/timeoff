@@ -224,7 +224,7 @@ const MyTlog = () => {
   for (let i = 0; i < data.length; i += itemPer) {
     dataGroup.push(data.slice(i, i + itemPer));
   }
-  console.log(dataGroup);
+  
   return (
     <MyTlogWrap>
       <div className="my-tlog-title">

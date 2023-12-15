@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { HeaderWrap, Spacer } from "../styles/HeaderStyle";
 import { setTrue } from "../reducers/tlogSlice";
@@ -6,11 +6,25 @@ import { useDispatch } from "react-redux";
 import Search from "./Search";
 import { LoginModal } from "./Modal";
 
-
 const Header: React.FC = () => {
+  const [moveScroll, setMoveScroll] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleMoveScroll = () => {
+      if (window.scrollY > 180) {
+        setMoveScroll(true);
+      } else {
+        setMoveScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleMoveScroll);
+    return () => {
+      window.removeEventListener("scroll", handleMoveScroll);
+    };
+  }, []);
 
   const handleImgClick = () => {
     dispatch(setTrue());
@@ -24,13 +38,11 @@ const Header: React.FC = () => {
     setModalOpen(true);
   };
 
-  // const handleModalClose = () => {
-  //   setModalOpen(false);
-  // }
-
   return (
-    <>
-      <HeaderWrap>
+    <HeaderWrap>
+      <div
+        className={`header-inner ${moveScroll ? "header-inner-change" : ""}`}
+      >
         <ul className="main-category">
           <NavLink to={`/`}>
             <li>
@@ -95,9 +107,9 @@ const Header: React.FC = () => {
             <img src="" alt="" />
           </li>
         </ul>
-      </HeaderWrap>
+      </div>
       <Spacer />
-    </>
+    </HeaderWrap>
   );
 };
 

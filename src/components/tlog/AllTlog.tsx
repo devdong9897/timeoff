@@ -7,10 +7,6 @@ import {
 } from "../../styles/AllTlogStyle";
 import { setFalse } from "../../reducers/tlogSlice";
 
-// interface AllTlogProps {
-//   setChange: React.Dispatch<React.SetStateAction<boolean>>;
-// }
-
 interface Data {
   uid: number;
   title: string;
@@ -271,15 +267,11 @@ const themeData: ThemeData[] = [
   { theme: "#크루즈" },
 ];
 
-// const AllTlog: React.FunctionComponent<AllTlogProps> = (
-//   props: AllTlogProps,
-// ) => {
 const AllTlog = () => {
   const dispatch = useDispatch();
 
   const handleImgClick = () => {
     console.log("이동되니");
-    // props.setChange(false);
     dispatch(setFalse());
   };
 
