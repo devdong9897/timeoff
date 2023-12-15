@@ -11,18 +11,16 @@ export interface ThemeItem {
   firstImage: string;
 }
 
-const getThemeList = async (): Promise<ThemeItem[]> => {
+const getThemeList = async () => {
   try {
-    const res = await axios.get(
-      `https://port-0-time-off-57lz2alptiphb4.sel4.cloudtype.app/event/1`,
-    );
-    console.log(res);
-    const result: ThemeItem[] = res.data;
-    console.log(result);
-    return result;
+    const res = await axios.get("http://13.125.252.184:8080/event/1");
+    const data = res.data as ThemeItem[];
+    console.log("Response Data:", data);
+    return data;
   } catch (error) {
-    console.log(error);
-    throw new Error("Failed to fetch theme list");
+    console.error("Error:", error);
+    throw new Error("에러에러에러");
   }
 };
+
 export default { getThemeList };
