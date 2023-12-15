@@ -27,7 +27,7 @@ export const Dummydata2: IcourseData[] = [
 const FavoriteCourse = ({ setModalOpen }: any) => {
   return (
     <CourseWrap>
-      <div>Favorite Course</div>
+      <h2> 여행코스 </h2>
       <div className="mark-content">
         {Dummydata2?.map((item, index) => (
           <ul key={index}>

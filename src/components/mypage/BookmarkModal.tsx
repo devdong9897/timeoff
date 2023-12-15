@@ -21,7 +21,6 @@ function BookmarkModal({ setModalOpen, whatOpen }: any) {
             <FontAwesomeIcon icon={faXmark} />
           </button>
           <div className="modal-content">
-            모달창입니다.
             <div>
               {whatOpen === "mark" ? <FavoriteBookmark /> : <FavoriteCourse />}
             </div>

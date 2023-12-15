@@ -28,7 +28,7 @@ export const Dummydata: IbookmarkData[] = [
 const FavoriteBookmark = ({ setModalOpen }: any) => {
   return (
     <BookmarkWrap>
-      <div>Favorite Bookmark</div>
+      <h2> 즐겨찾기 </h2>
       <div className="mark-content">
         {Dummydata?.map((item, index) => (
           <ul key={index}>

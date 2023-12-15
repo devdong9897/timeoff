@@ -75,7 +75,7 @@ export const MypageWrap = styled.div`
   }
 `;
 
-// 즐겨찾기 더보기 메뉴 
+// 즐겨찾기 더보기 메뉴
 export const BookmarkWrap = styled.div`
   .mark-content {
     display: flex;
@@ -124,6 +124,7 @@ export const BookmarkMdStyle = styled.div`
       /* 모달창 디자인 */
       background-color: #f4f0ef;
       border-radius: 5px;
+      box-shadow: 2px 1px 7px 1px rgba(0, 0, 0, 0.1);
     }
 
     /* 모달창 내부 X버튼 */
