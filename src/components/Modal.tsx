@@ -1,18 +1,18 @@
 import { ModalInner, ModalWrap } from "../styles/ModalStyle";
+import PropTypes from "prop-types";
 
-interface PropsType {
+interface LoginModalProps {
   modalOpen: boolean;
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const LoginModal: React.FC<PropsType> = ({
-  // eslint-disable-next-line react/prop-types
+export const LoginModal: React.FC<LoginModalProps> = ({
   modalOpen,
-  // eslint-disable-next-line react/prop-types
   setModalOpen,
 }) => {
   const handleCancel = () => {
     setModalOpen(false);
+    document.body.style.overflow = "unset";
   };
 
   return (
@@ -36,7 +36,7 @@ export const LoginModal: React.FC<PropsType> = ({
                 <br />
                 <span>오신걸 환영합니다.</span>
               </div>
-              <ul>
+              <ul className="modal-btm-body">
                 <li>
                   <img src="/login/naver.png" alt="" />
                 </li>
@@ -45,7 +45,7 @@ export const LoginModal: React.FC<PropsType> = ({
                 </li>
               </ul>
               <div className="modal-btm-footer">
-                <span>sns소셜 로그인을 통해</span>
+                <span>SNS소셜 로그인을 통해</span>
                 <br />
                 <span>다양한 여행 정보를 볼 수 있습니다.</span>
               </div>
@@ -55,4 +55,9 @@ export const LoginModal: React.FC<PropsType> = ({
       )}
     </>
   );
+};
+
+LoginModal.propTypes = {
+  modalOpen: PropTypes.bool.isRequired,
+  setModalOpen: PropTypes.func.isRequired,
 };

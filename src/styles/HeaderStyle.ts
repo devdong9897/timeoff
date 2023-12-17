@@ -1,6 +1,61 @@
 import styled from "@emotion/styled";
 
-export const HeaderWrap = styled.header`
+interface HeaderWrapProps {
+  clickSearch: boolean;
+}
+
+export const HeaderWrap = styled.header<HeaderWrapProps>`
+  width: 100%;
+  ${({ clickSearch }) =>
+    clickSearch
+      ? `
+      .dim{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(2px);
+      z-index: 50;
+      }
+      .header-inner {
+        position: fixed;
+        top: 0;
+        z-index: 999;
+        width: 100%;
+        height: 70%;
+        background: #fff;
+        padding-top: 1rem;
+        overflow: hidden;
+        .header-title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 15% 0 15%;
+          li:last-of-type {
+            cursor: pointer;
+          }
+        }
+        .header-body {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding-top: 2%;
+          ul {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            li:nth-of-type(2) {
+              height: 220px;
+            }
+            li:nth-of-type(3) {
+              height: 220px;
+            }
+          }
+        }
+      }
+      `
+      : `
   .header-inner {
     position: fixed;
     top: 0;
@@ -10,16 +65,6 @@ export const HeaderWrap = styled.header`
     align-items: center;
     width: 100%;
     height: 6rem;
-    > div {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      width: 68px;
-      height: 60px;
-      cursor: pointer;
-      > img {
-      }
-    }
     .main-category {
       width: 100%;
       height: 100%;
@@ -59,7 +104,7 @@ export const HeaderWrap = styled.header`
       padding-left: 4%;
       gap: 20px;
       width: 100%;
-      > li {
+      li {
         cursor: pointer;
         img {
           width: 40px;
@@ -69,10 +114,9 @@ export const HeaderWrap = styled.header`
     }
     &.header-inner-change {
       background: #fff;
-
       box-shadow: 0px 1px 10px 0px rgba(51, 51, 51, 0.2);
     }
-  }
+  }`}
 `;
 
 export const Spacer = styled.div`

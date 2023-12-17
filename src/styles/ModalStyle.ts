@@ -51,7 +51,7 @@ export const ModalInner = styled.div`
     .modal-btm-header {
       font-size: 1.6rem;
       padding: 30px 0 30px 0;
-      span:nth-child(2) {
+      span:nth-of-type(2) {
         font-size: 1.8rem;
         font-weight: 600;
         color: #006dab;
@@ -66,7 +66,7 @@ export const ModalInner = styled.div`
       font-size: 1rem;
       padding-top: 30px;
     }
-    ul {
+    .modal-btm-body {
       display: flex;
       justify-content: center;
       gap: 3rem;
