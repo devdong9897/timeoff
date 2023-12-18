@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Bnner } from "../../styles/MainBnnerStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowLeft,
   faArrowRight,
-  faChevronLeft,
   faPause,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
@@ -59,6 +59,7 @@ const MainBnner: React.FC = () => {
   const totalSlide = mainData.length;
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
@@ -118,7 +119,7 @@ const MainBnner: React.FC = () => {
                 </div>
                 <div className="progress-bt">
                   <button className="prev-bt" onClick={prevSlide}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
+                    <FontAwesomeIcon icon={faArrowLeft} />
                   </button>
                   <button onClick={togglePlay} className="stop-bt">
                     {isPlaying ? (
