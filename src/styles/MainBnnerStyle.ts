@@ -56,12 +56,14 @@ export const Bnner = styled.div`
           width: 30px;
         }
         .progress-bt {
+          width:105px;
+          margin-left: 20px;
           .prev-bt,
           .next-bt,
           .stop-bt {
+            width: 30px;
             border: 0;
             background-color: transparent;
-            margin-left: 20px;
           }
         }
       }
