@@ -52,10 +52,13 @@ export const Bnner = styled.div`
         height: 40px;
         right: 10.25%;
         top: 574px;
-
+        .current-slide {
+          width: 30px;
+        }
         .progress-bt {
-          margin-left: 240px;
-          .prev-bt , .next-bt, .stop-bt{
+          .prev-bt,
+          .next-bt,
+          .stop-bt {
             border: 0;
             background-color: transparent;
             margin-left: 20px;
