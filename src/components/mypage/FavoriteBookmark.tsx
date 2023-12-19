@@ -1,5 +1,11 @@
 import React from "react";
 import { BookmarkWrap } from "../../styles/MypageStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBasketShopping,
+  faThumbsUp,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 export interface IbookmarkData {
   img: string;
@@ -32,8 +38,21 @@ const FavoriteBookmark = ({ setModalOpen }: any) => {
       <div className="mark-content">
         {Dummydata?.map((item, index) => (
           <ul key={index}>
-            <li>
+            <li className="mark-img">
               <img src={`${item.img}`} alt={item.title} />
+              <div className="mark-img-hover">
+                <ul className="mark-submenu">
+                  <li>
+                    <FontAwesomeIcon icon={faThumbsUp} />
+                  </li>
+                  <li>
+                    <FontAwesomeIcon icon={faBasketShopping} />
+                  </li>
+                  <li>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </li>
+                </ul>
+              </div>
             </li>
             <li>
               <p>{item.title}</p>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BookmarkModal from "./BookmarkModal";
+import { MymenuSection } from "../../styles/MypageStyle";
 
 const Mymenu = () => {
   // 모달창 노출 여부 state
@@ -18,7 +19,7 @@ const Mymenu = () => {
   };
 
   return (
-    <div className="mymenusection">
+    <MymenuSection>
       <ul>
         <li>
           <h3>나의활동</h3>
@@ -40,7 +41,7 @@ const Mymenu = () => {
           </div>
         </li>
       </ul>
-    </div>
+    </MymenuSection>
   );
 };
 
