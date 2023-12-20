@@ -50,15 +50,35 @@ export const Bnner = styled.div`
         position: absolute;
         width: 500px;
         height: 40px;
-        right: 10.25%;
+        right: 13%;
         top: 574px;
 
+        .progress {
+          width: 300px;
+          height: 2px;
+          margin-right: 30px;
+          background-color: #b2b2b2;
+          z-index: 1;
+
+          .inner-progress {
+            right: 0;
+            height: 100%;
+            background-color: black;
+            transition: width 0.1s ease-in-out;
+          }
+        }
+        .current-slide {
+          width: 30px;
+        }
         .progress-bt {
-          margin-left: 240px;
-          .prev-bt , .next-bt, .stop-bt{
+          width: 105px;
+          margin-left: 20px;
+          .prev-bt,
+          .next-bt,
+          .stop-bt {
+            width: 30px;
             border: 0;
             background-color: transparent;
-            margin-left: 20px;
           }
         }
       }

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Bnner } from "../../styles/MainBnnerStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowLeft,
   faArrowRight,
-  faChevronLeft,
   faPause,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import useInterval from "../../hooks/useInterval";
 
 interface MainSlide {
   pk: number;
@@ -59,31 +60,34 @@ const MainBnner: React.FC = () => {
   const totalSlide = mainData.length;
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [progress, setProgress] = useState<number>(0);
 
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
+  useInterval(
+    () => {
+      const newProgress = progress + 100 / (4000 / 100);
 
-    if (isPlaying) {
-      intervalId = setInterval(() => {
+      if (newProgress >= 100) {
+        setProgress(0);
         nextSlide();
-      }, 4000);
-    }
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [currentSlide, isPlaying]);
+      } else {
+        setProgress(newProgress);
+      }
+    },
+    isPlaying ? 100 : null,
+  );
 
   const prevSlide = () => {
     setCurrentSlide(prevSlide =>
       prevSlide === 0 ? totalSlide - 1 : prevSlide - 1,
     );
+    setProgress(0);
   };
 
   const nextSlide = () => {
     setCurrentSlide(prevSlide =>
       prevSlide + 1 >= totalSlide ? 0 : prevSlide + 1,
     );
+    setProgress(0);
   };
 
   const togglePlay = () => {
@@ -113,12 +117,18 @@ const MainBnner: React.FC = () => {
             </li>
             <li>
               <div className="progress-bar">
+                <div className="progress">
+                  <div
+                    className="inner-progress"
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
                 <div className="current-slide">
                   {currentSlide + 1} / {totalSlide}
                 </div>
                 <div className="progress-bt">
                   <button className="prev-bt" onClick={prevSlide}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
+                    <FontAwesomeIcon icon={faArrowLeft} />
                   </button>
                   <button onClick={togglePlay} className="stop-bt">
                     {isPlaying ? (
