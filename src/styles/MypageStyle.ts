@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const MypageColor = {
   mainblue: "#006dab",
   mainwhite: "#ffffff",
+  backdim: "rgb(0, 0, 0, 0.2)",
 };
 
 export const MypageWrap = styled.div`
@@ -20,56 +21,54 @@ export const MypageWrap = styled.div`
     padding: 10px;
     border-radius: 5px;
     /* background-color: #fffacd; */
-    gap: 30px;
+    /* gap: 30px; */
     display: flex;
     justify-content: center;
     align-content: center;
-    ul {
-      margin: 0 auto;
-      text-align: center;
-    }
+  }
+`;
 
-    /* 프로필 섹션 */
-    .profilesection {
-      flex: 1;
-      padding: 10px;
-      ul {
-        margin: 0 auto;
-        width: 300px;
-        height: 300px;
-        border-radius: 10px;
-        background-color: ${MypageColor.mainblue};
-        color: ${MypageColor.mainwhite};
-        li {
-          padding: 20px;
-        }
-        .profilepic {
-          img {
-            border-radius: 50%;
-          }
-        }
+/* 프로필 섹션 */
+export const ProfileSection = styled.div`
+  width: 600px;
+  padding: 10px;
+  ul {
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: ${MypageColor.mainblue};
+    color: ${MypageColor.mainwhite};
+    li {
+      padding: 20px;
+    }
+    .profilepic {
+      img {
+        border-radius: 50%;
       }
     }
+  }
+`;
 
-    /* 마이메뉴 섹션 */
-    .mymenusection {
-      flex: 1;
-      ul {
-        margin: 0 auto;
-        text-align: left;
-        li {
-          padding: 10px;
-          & h4 {
-            padding-left: 10px;
-            font-size: 1rem;
-          }
-          & div > button {
-            cursor: pointer;
-            border: 0;
-            background: 0;
-            padding-left: 10px;
-          }
-        }
+/* 마이메뉴 export const섹션 */
+export const MymenuSection = styled.div`
+  width: 600px;
+  text-align: left;
+
+  ul {
+    margin: 0 auto;
+    li {
+      padding: 10px;
+      & h4 {
+        padding-left: 10px;
+        font-size: 1rem;
+      }
+      & div > button {
+        cursor: pointer;
+        border: 0;
+        background: 0;
+        padding-left: 10px;
       }
     }
   }
@@ -84,6 +83,33 @@ export const BookmarkWrap = styled.div`
     li {
       padding: 0;
       text-align: center;
+      cursor: pointer;
+    }
+
+    .mark-img {
+      position: relative;
+    }
+    .mark-img:hover {
+      .mark-img-hover {
+        display: block;
+      }
+    }
+    .mark-img-hover {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      background-color: ${MypageColor.backdim};
+    }
+    .mark-submenu {
+      display: flex;
+      gap: 10px;
+      font-size: 1rem;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
     }
   }
 `;
@@ -99,13 +125,14 @@ export const CourseWrap = styled.div`
     }
   }
 `;
+
 export const BookmarkMdStyle = styled.div`
   /* 모달창을 화면 중앙. 최상단에 노출 */
   .wrap {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgb(0, 0, 0, 0.2);
+    background-color: ${MypageColor.backdim};
     height: 100vh;
     width: 100vw;
     z-index: 9999;
